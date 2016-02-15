@@ -17,5 +17,5 @@ remote	url	Ajax下载弹窗的url，目前仅能用于Dialog插件
 ##$.fn.popup的声明式使用
 $.fn.popup支持声明式使用，为触发弹窗元素增加data-toggle="popup"的属性，option可以通过data- + option值的方式传入，例如data-type = "bottom"等。
 
-##Dialog函数的api
+#Dialog函数的api
 Dialog函数用于ajax下载弹窗内容并打开，需传入三个参数Dialog(element,config,option)，其中element为弹窗的选择器表达式，config中必须传入remote，option为需要执行的方法。
