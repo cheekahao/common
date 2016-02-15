@@ -1,0 +1,63 @@
+var maxtimes=0;
+var hebaoURL=contextPath+"/polling/queryUnderwriting";
+var zhifuURL=contextPath+"/polling/queryPayment";
+var w1,w2;
+
+function hebao(){
+	maxtimes++;
+	if(maxtimes > 30){ 
+		location.href=contextPath+"/baojia/orderstatus"
+	}
+	$.ajax({
+		 type:"GET",
+		 url:hebaoURL,
+		  jsonp:"jsonpcallback",
+		  beforeSend:function(){
+			  showLoading("正在核保中……")
+			  },
+		  timeout:20000,
+		  success:function(data){
+          	 if(data.pollingState  != "STOP"){setTimeout(hebao,3000)}else{
+          		 if(data.state < 0){
+          			location.href=contextPath+"/baojia/orderstatus";
+          		 }else{
+          			 hebao_suc(data);
+          		 }
+			 }
+		 },
+		error:function (xhr, textStatus, errorThrown) {
+			   location.href=contextPath+"/baojia/orderstatus";
+		 },
+		dataType:"jsonp"
+	})
+}
+
+function hebao_suc(data){
+	location.href=contextPath+"/baojia/underwritingResult";
+}
+
+
+$("#_btn_order_check").click(function(){
+	maxtimes=0;//测试用
+	commitOrder();
+	showLoading();
+	$("#pop_hebao").show();
+})
+
+function commitOrder(){
+	$.ajax({
+		 type:"POST",
+		 url:contextPath+"/baojia/orderconfirm/" + $("#orderNo").val(),
+		 	success:function(data){
+		 		hebao();
+		 	}
+	});
+}
+
+hideLoading=function(){
+    $("#mask").hide();
+}
+
+showLoading=function(){
+    $("#mask").show();
+}

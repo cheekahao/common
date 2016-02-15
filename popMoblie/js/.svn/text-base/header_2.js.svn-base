@@ -1,0 +1,77 @@
+function historyBack() {
+	var refer = document.referrer;
+	if(refer=="") {
+		history.go(-1);
+		return;
+	}
+	var p=refer.indexOf("/",8);
+	if (p<0) p=refer.length();
+	refer=refer.substr(0,p);
+	if (refer.indexOf("yibaoxian.com")>0) {
+		history.go(-1);
+	} else {
+		location.href="/m";
+	}
+}
+
+(function(){
+	var contextPath="";
+	var title=$("script[src*='/js/header.js']").attr("title");
+	if (title==undefined||title==null) {
+		title="<img src='http://www.yibaoxian.com/m/images/logo.png'/>";
+	}
+	function printHtml() {
+		var headHtml="<header id='_header'></header>";
+		document.write(headHtml);
+	}
+	
+	printHtml();
+	
+	//用户来源
+	function getQueryString(name) {
+	    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+	    var r = window.location.search.substr(1).match(reg);
+	    if (r != null) return unescape(r[2]); return null;
+	}
+	
+	function getHeader() {
+		$.ajax({type:"POST",url:contextPath+"/navigat",data:"pageTitle="+title,timeout:5000,cache:false,
+			 success:function(html) {
+				 $("#_header").empty().html(html);
+					
+					//菜单
+					$("._right_btn a").click(function(){
+						$("._xl_menu").slideToggle();
+						return false;
+					});
+					
+					var hideMenu=function() {
+						$("._xl_menu").hide();
+					}
+					
+					$(window).scroll(hideMenu);
+			 }})
+	}
+
+	function setFrom(source, fromPoint){
+		var checkUrl = contextPath+"/source?from="+source+"&f="+fromPoint+"&v="+Math.random();
+		$.ajax({
+			 type:"GET",
+			 url:checkUrl,
+			 timeout:5000,
+			 cache:false,
+			 success:function() {
+				 getHeader()
+			 }
+		});
+	}
+
+	var source = getQueryString("from");
+	var fromPoint = getQueryString("f");
+	if(source != undefined && source != null && $.trim(source) != ""){
+		if (fromPoint == null || fromPoint == undefined) fromPoint="";
+		setFrom(source, fromPoint);
+	} else {
+		getHeader()
+	}
+})();

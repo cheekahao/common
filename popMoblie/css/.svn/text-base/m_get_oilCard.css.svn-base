@@ -1,0 +1,30 @@
+
+.top_banner{
+	background: url(../images/m_get_oilCard/mtop_banner.png) no-repeat;    
+    background-color: #f9e483;
+    background-position: top center;
+    background-size: 100% auto;
+    height: 182px;}
+/*p{display: inline}*/
+.step_div{float: left; font-size: 11px;}
+ul{width:100%;float:left;background-color: #fff;padding-bottom: 45px;}
+ul li{float:left;padding-top: 16px;padding-left: 12px;}
+img{clear: both;margin: 10px auto 0;width: 96%;height: auto;}
+.step_p{    
+	width: 68%;
+    line-height: 20px;
+    padding-left: 6px;}
+.step_bg{
+	background: url(../images/m_get_oilCard/arrow_mark.png) no-repeat;
+	background-size:60px 19px;
+	background-position: 0px;
+	width: 60px;
+    line-height: 19px;
+    color: #FFF;
+    padding-left: 10px;
+    margin-bottom: 8px
+}
+p{clear: both;font-size: 12px;padding-top: 5px;}
+.notice_p{padding-left: 30px;}
+a{color: #388ae5;}
+span{color: #cd0000;}

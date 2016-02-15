@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8" />
+		<title>M版易保险</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable =no">
+		<link rel="stylesheet" type="text/css" href="css/base.css" />
+		<link rel="stylesheet" type="text/css" href="css/iconfont.css"/>
+	</head>
+	<body>
+	    <div class="container">
+	        <form class="login-form" action="">
+	            <div class="form_row">
+	                <label for=""><i class="icon icon-location"></i></label>
+	                <input type="text" value="北京" />
+	            </div>
+	            <div class="form_row">
+	                <label for=""><i class="icon icon-mobile"></i></label>
+                    <input type="text" value="18510778863" />
+	            </div>
+	            <input type="date" name="" id="" value="" fomat="yyyy-mm-dd" />
+                <button id="openDialog" type="button" data-toggle="popup" data-remote="dialog.html" data-target="#dateDialog">打开对话框</button>
+	        </form>
+	        
+	        
+	    </div>
+	    
+	        <div class="date-box">
+	           <div class="box-header">
+	               <button class="cancel" type="button">取消</button>
+	               <button class="confirm" type="button">确定</button>
+	           </div>
+	           <div class="box-content">
+	               <div class="selected-box"></div>
+	               <div class="select-container calendar">
+	                   <div class="select-item">
+	                   	<ul class="select-ul">
+	                   		<li class="current-2">2015年</li>
+	                   		<li class="current-1">2015年</li>
+	                   		<li>2015年</li>
+	                   		<li class="current1">2015年</li>
+	                   		<li class="current2">2010年</li>
+	                   		<li>2011年</li>
+	                   		<li>2012年</li>
+	                   		<li>2013年</li>
+	                   		<li>2014年</li>
+	                   		<li>2015年</li>
+	                   	</ul>
+	                   </div>
+	                   <div class="select-item">
+                        <ul class="select-ul">
+                            <li>1月</li>
+                            <li>2月</li>
+                            <li>3月</li>
+                            <li>4月</li>
+                            <li>5月</li>
+                            <li>6月</li>
+                            <li>7月</li>
+                            <li>8月</li>
+                            <li>9月</li>
+                            <li>10月</li>
+                        </ul>
+                       </div>
+                       <div class="select-item">
+                        <ul class="select-ul">
+                            <li>6日</li>
+                            <li>7日</li>
+                            <li>8日</li>
+                            <li>9日</li>
+                            <li>10日</li>
+                            <li>11日</li>
+                            <li>12日</li>
+                            <li>13日</li>
+                            <li>14日</li>
+                            <li>15日</li>
+                        </ul>
+                       </div>
+	               </div>
+	           </div>
+	        </div>
+	    
+		<script type="text/javascript" src="js/jquery-2.1.4.js"></script>
+		<script src="js/dialog.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+		    $(function(){
+//		       $("#openDialog").click(function(){
+//		           var data = $(this).data();
+//		           $(".date-box").popup().open();
+//		           
+		       });
+
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,11 @@
+$(function(){
+	function getNumber() {
+		$.ajax({url:"/data/currentNumber", success:function(data){
+			var map=$.parseJSON(data);
+			$("#_compareNumber").text(map.compareNumber);
+			$("#_freeMoney").text(map.freeMoney);
+		}});
+	}
+	setInterval(getNumber, 50000); 
+	getNumber();
+});

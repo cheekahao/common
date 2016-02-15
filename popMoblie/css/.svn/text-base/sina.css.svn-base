@@ -1,0 +1,94 @@
+*{margin: 0;padding: 0;}
+._clearfix:before,
+._clearfix:after,
+._container:before,
+._container:after {
+	display: table;
+	line-height: 0;
+	content: "";
+}
+._clearfix:after,
+._container:after {
+	clear: both;
+}
+ul{list-style: none;}
+/*轮播*/
+.sina_lunbo{color: #fff;background-color: #e94740}
+.sina_lunbo ul{width: 294px;margin: 0 auto;}
+.sina_lunbo ._list{background-size: 100%;    background-color: #e94740;}
+.sina_lunbo ul li{width: 33.333333%;float: left;}
+.sina_lunbo ul li p{font-size: 10px;text-align: center;padding: 2px 0 6px 0;-webkit-text-size-adjust:none;}
+.sina_lunbo ul li span{font-size: 24px;line-height: 40px;display: block;width: 82px;margin: 0 auto;text-align: left;padding-left: 8px;background: #f6ad1d url(../images/bg_chengdu_coupon.jpg) no-repeat center center;background-size: 78px auto;}
+.sina_lunbo ._state_bg_top{width:100%;}
+.sina_lunbo ._state_bg_top img{
+	width: 100%;}
+.sina_lunbo ._state_bg_content{
+	    width: 100%;
+    background: url(../images/sina/__state_bg_content.png) no-repeat;
+    background-position: top;
+    background-size: 100%;
+    background-color: #e94740;
+    padding-bottom: 8px;
+    height: 92px;}
+.sina_lunbo ._state_bg_content p{    width: 277px;
+    margin: 0 auto;
+    line-height: 16px;
+    font-size: 10px;}
+/*首页*/
+.sina_index .brand_promotion{    width: 98%;
+    margin: 0 auto;}
+.sina_index .brand_promotion img{width: 100%;}
+.sina_index .brand_promotion ._brands{    margin: 5px auto;}
+.sina_index .brand_promotion .double_brands img{float: left;width: 49.2%;}
+.sina_index .brand_promotion .double_brands .left_brand{    margin-right: 1.6%;}
+/*如何投保*/
+.sina_get_tb{font-size: 10px;}
+.sina_get_tb .top_banner{height: 147px;background: url(../images/banner/get_tb_banner.jpg) no-repeat;background-position: top center;margin-bottom: 10px;}
+.sina_get_tb .steps{border: 1px solid #e5e5e5;background-color: #f6f8f9;margin-bottom: 44px;}
+.sina_get_tb .container ul{width: 100%margin-top: 28px;margin-bottom: 68px;}
+.sina_get_tb .container h3{display: inline;font-size: 10px;font-weight: normal;}
+.sina_get_tb .container img{display: block;width: 80%;margin: 0 auto;}
+.sina_get_tb .container ul li{position: relative;margin:0 auto 10px; width: 93%;}
+.sina_get_tb .container ul h3{
+	padding-left: 45px;
+    letter-spacing: 0.5px;
+    line-height: 34px;}
+.sina_get_tb .container p{padding-left: 116px;font-size: 10px;}
+.sina_get_tb .step{
+	width: 45px;
+    height: 45px;
+    position: absolute;}
+.sina_get_tb .container .step1{background: url(../images/sina/step1.png) no-repeat;      background-size: 92%;  }
+.sina_get_tb .container .step2{background: url(../images/sina/step2.png) no-repeat;    background-size: 92%;}
+.sina_get_tb .container .step3{background: url(../images/sina/step3.png) no-repeat;    background-size: 92%;}
+.sina_get_tb .container .step4{background: url(../images/sina/step4.png) no-repeat;    background-size: 92%;}
+.sina_get_tb .container .step5{background: url(../images/sina/step5.png) no-repeat;    background-size: 92%;}
+.sina_get_tb .container .step6{background: url(../images/sina/step6.png) no-repeat;    background-size: 92%;}
+.sina_get_tb .container .step7{background: url(../images/sina/step7.png) no-repeat;    background-size: 92%;}
+/*如何领油卡*/
+
+.sina_get_oilCard .top_banner img{    
+	margin: 0;
+    width: 100%;}
+.sina_get_oilCard .step_div{float: left; font-size: 11px;}
+.sina_get_oilCard ul{width:100%;float:left;background-color: #fff;padding-bottom: 45px;}
+.sina_get_oilCard ul li{float:left;padding-top: 16px;padding-left: 12px;}
+.sina_get_oilCard img{clear: both;margin: 10px auto 0;width: 96%;height: auto;}
+.sina_get_oilCard .step_p{    
+	width: 68%;
+    line-height: 20px;
+    padding-left: 6px;}
+.sina_get_oilCard .step_bg{
+	background: url(../images/sina/arrow_mark.png) no-repeat;
+	background-size:60px 19px;
+	background-position: 0px;
+	width: 60px;
+    line-height: 19px;
+    color: #FFF;
+    padding-left: 10px;
+    margin-bottom: 8px
+}
+.sina_get_oilCard p{clear: both;font-size: 12px;padding-top: 5px;}
+.sina_get_oilCard .notice_p{padding-left: 30px;}
+.sina_get_oilCard a{color: #388ae5;}
+.sina_get_oilCard span{color: #cd0000;}

@@ -1,0 +1,144 @@
+@charset "utf-8";
+._header_price{line-height: 48px;background: #FFFFFF; position: relative; z-index: 1; border-bottom: 1px solid #c2c2c2;}
+._header_price h1{color: #1e6a9b;font-size: 20px;line-height: 48px;padding:0 32px}
+._header_price img{height: 23px;margin: auto 10px;}
+._header_price ._header_expert_icon{width: 66px; height: 34px; margin-top: 7px; display: block; position: absolute; z-index: 2; right: 15px; top: 0px; background: url(../images/icon/icon_insurance_choose.jpg); background-size: 158px auto; background-position: -198px 0;}
+._header_price ._left {float: left;background: url(/m/images/icon/icon_arrow_prev.jpg) no-repeat;background-size: 12px 23px;margin: 10px 10px;width: 12px;height: 23px;display: inline-block;}
+._header_price ._right_btn{background: url(/m/images/icon/icon_insurance_choose.jpg) no-repeat; background-size: 158px auto;float:right;display: block;width: 18px;height: 14px;background-position: -16px 0;position: absolute; top:15px;right: 15px;}
+._sub_menu{background: #fff;z-index: 11;position: absolute;display: none;right: 0;width: 100%; opacity: 0.9; border-top: 1px solid #c9c9c9;}
+._sub_menu ul li{height: 45px;border-bottom: 1px solid #cacaca;text-align: right; padding:0 15px;}
+._sub_menu ul li a{color: #0064a2;width: 100%;line-height: 45px; display: block;overflow: hidden;}
+.ah_div .ah_form_div .ah_search_form ._find_order {     height: 32px;width: 85%;margin: 0 auto;   }
+.ah_div .ah_form_div .ah_search_form ._find_order a{float: right;color: #1d2088;    padding-top: 9px;}
+/*M版投保有礼前置弹窗样式*/
+#chengduCoupan{background: url(../images/coupon_chengdu_dialog.jpg) no-repeat;background-size: 100% auto;}
+#chengduCoupan ._dialog_title{border: none;}
+#chengduCoupan ._dialog_title a{background: #ee4042;width: 20px;height: 20px;color: #fff;line-height: 18px;top: 10px;right: 10px;font-weight: normal;font-size: 18px;}
+#chengduCoupan .btn_coupon_chengdu{margin: 274px 0 0 0;}
+#chengduCoupan .btn_coupon_chengdu .btn_red{background: #e64531; height: 30px;line-height:30px;color: #f7f2ef;font-size: 16px;}
+#chengduCoupan .btn_coupon_chengdu .read_details{color: #888;display: block;text-align: center;font-size: 12px;line-height: 30px;text-decoration: underline;}
+
+._footer_price ._banner_footer .ad_coupon{font-size: 14px;line-height: 56px;text-align: center;}
+._footer_price ._banner_footer .ad_coupon i{background: #ff9900;color:#fff;line-height: 16px;padding: 0 2px;border-radius: 2px;margin-right: 4px;}
+._footer_price ._banner_footer .ad_coupon em{color: #ff9900;}
+
+.address_insure_info{padding: 10px 15px 0px 15px;background: #fff;}
+.address_insure_info p{font-size: 17px;line-height: 34px;color: #666;}
+.address_insure_info .company_name{color: #000;}
+.address_insure_info .insure_money{color: #11b2b0;font-size: 16px;}
+.address_insure_info .coupon_box{border-top: 1px solid #e4e4e4;}
+.address_insure_info .coupon_box .coupon_name{float: left;width: 100px;font-size: 17px;color: #666;padding-top: 15px;}
+.address_insure_info .coupon_box .coupon_details{margin-left: 100px;}
+.address_insure_info .coupon_box input{display: none;}
+.address_insure_info .coupon_box .checkbox_checked,
+.address_insure_info .coupon_box .coupon_label,
+.address_insure_info .coupon_box .coupon_num{background:url(../images/coupon_address_num.jpg) no-repeat;background-size: auto 195px;height: 38px;margin-top: 8px;}
+.address_insure_info .coupon_box .checkbox_checked{display: block;width: 16px;height: 16px;border-radius:16px;background-color:#ff902d;background-position: 4px 4px;float: left;margin-top: 10px;margin-right: 30px;box-sizing: border-box;}
+.address_insure_info .coupon_box .checkbox_uncheck{border: 1px solid #c2c2c2;background: none;}
+.address_insure_info .coupon_box .coupon_label p{color: #ff6600;font-size: 14px;font-weight: bold;line-height: 30px;}
+.address_insure_info .coupon_box .coupon_label{background-position:22px -158px;display: block;width: 100%;}
+.address_insure_info .coupon_box .coupon_num{display: inline-block;width: 32px;height: 19px;}
+.address_insure_info .coupon_box .coupon_num_100{background-position:0px -10px;}
+.address_insure_info .coupon_box .coupon_num_200{background-position:0px -47px;}
+.address_insure_info .coupon_box .coupon_num_300{background-position:0px -84px;}
+.address_insure_info .coupon_box .coupon_num_400{background-position:0px -121px;}
+.address_insure_info .coupon_box .coupon_num_500{background-position:0px -139px;}
+.address_insure_info .coupon_box .coupon_num_600{background-position:0px -102px;}
+.address_insure_info .coupon_box .coupon_num_700{background-position:0px -28px;}
+.address_insure_info .coupon_box .coupon_num_800{background-position:0px -65px;}
+.address_insure_info .coupon_box .coupon_mark{display: block;float: left;margin:10px 2px 0 0;line-height: 20px;}
+.address_insure_info .coupon_box .coupon_txt{font-size: 12px;color: #999;line-height: 20px;padding: 6px 0;}
+
+.page_coupon_list{background: #f4471e;}
+.page_coupon_list *{box-sizing: border-box;}
+.page_coupon_list ul{padding: 16px 0;margin: 0 auto;width: 272px;}
+.page_coupon_list ul li{float: left;margin:0 10px 10px 0;width: 272px;height: 79px;background: url(../images/bg_coupon_list.jpg) no-repeat;background-size: 272px auto;color: #ff902d;}
+.page_coupon_list .coupon_title{width: 38px;float: left;font-size: 14px;padding: 9px 12px;}
+.page_coupon_list .coupon_content{margin:19px 0 0 38px;}
+.page_coupon_list .coupon_content p{font-size: 12px;line-height: 18px;}
+.page_coupon_list .coupon_content .coupon_money{font-size: 16px;font-weight: bold;float: left;width: 48%;line-height: 32px;vertical-align: bottom;text-align: center;}
+.page_coupon_list .coupon_content .coupon_detail{color: #626a87;}
+.page_coupon_list .coupon_content .coupon_date{color: #666;}
+.page_coupon_list .coupon_content .coupon_num{background:url(../images/coupon_address_num.jpg) no-repeat;background-size: auto 390px;width: 68px;height:36px;display: inline-block;}
+.page_coupon_list .coupon_content .coupon_num_100{background-position: 0 -21px;}
+.page_coupon_list .coupon_content .coupon_num_200{background-position: 0 -95px;}
+.page_coupon_list .coupon_content .coupon_num_300{background-position: 0 -169px;}
+.page_coupon_list .coupon_content .coupon_num_400{background-position: 0 -243px;}
+.page_coupon_list .coupon_content .coupon_num_500{background-position: 0 -280px;}
+.page_coupon_list .coupon_content .coupon_num_600{background-position: 0 -206px;}
+.page_coupon_list .coupon_content .coupon_num_700{background-position: 0 -58px;}
+.page_coupon_list .coupon_content .coupon_num_800{background-position: 0 -132px;}
+.page_coupon_list .coupon_content .coupon_num_900{background-position: -107px -280px;}
+.page_coupon_list .coupon_content .coupon_num_1000{background-position: -105px -243px;}
+/*M版安徽详情页*/
+.ah_div *{box-sizing:border-box;}
+.ah_div .banner_box{position: relative;}
+.ah_div .banner_box img{width: 100%;}
+.ah_div .banner_box .ybx_logo{width: 18%;height: 30px;position: absolute;top:4%;left:4%;}
+.ah_div .ah_form_div{background:url(../images/sjz/idx_bg_58_02.jpg) no-repeat;width:100%;background-size:100%  198px;position: relative;height:  198px;}
+.ah_div .ah_form_div .ah_search_form{border-radius:5px;background:rgba(255,255,255,.3);position: absolute;left:30px;right: 30px;top: -58px; padding:10px;width: auto;}
+.ah_div .ah_form_div .ah_search_form .chengdu_form{background: #fff;border-radius:5px;}
+.ah_div .ah_form_div .ah_search_form .chengdu_form h1{font-size: 18px;color: #202020;padding: 14px 0;text-align: center;}
+.ah_div .ah_form_div .ah_search_form .chengdu_form em{color: #c10000;}
+.ah_div .ah_form_div .ah_search_form .ah_ipt1{color: #333;line-height: 24px;margin:0 20px 12px 20px;font-size:12px;}
+.ah_div .ah_form_div .ah_search_form .ah_ipt1 label{display: block;float: left;width: 60px;}
+.ah_div .ah_form_div .ah_search_form .ah_ipt1 input{border:1px solid #cfcfcf;border-radius: 0;height: 24px;width: 100%;padding: 0 10px;}
+.ah_div .ah_form_div .ah_search_form .ah_ipt1 select{width:100%;height:40px;padding-left:20px;border:none;background:transparent;color:#000;font-size: 16px;}
+.ah_div .ah_form_div .ah_search_form .ah_ipt1 span._price_input{width: 15px;height: 10px;display: inline-block;background: url(../images/icon/icon_price_triangle.jpg) no-repeat 90% 50%;position: absolute;right: 1.6%;top: 37.5%;}
+.ah_div .ah_form_div .ah_search_form .ah_ipt1 span.licno{display:block;float: left;text-align: right;width:72px;padding-right:8px;line-height: 25px;border-right: 1px solid #e6e6e6;margin-top: 8px;color:#a0a0a0;font-size:14px;}
+.ah_div .ah_form_div .ah_search_form .ah_ipt1 span.licwan{line-height:24px;display:block;float: left;padding-left:10px;color:#000;position: absolute;}
+.ah_div .ah_form_div .ah_search_form .ah_ipt1 span.span_select{display: block;margin-left: 72px;}
+.ah_div .ah_form_div .ah_search_form .ah_ipt1 span.span_input{display: block;margin-left: 60px;position: relative;}
+.ah_div .ah_form_div .ah_search_form .btn_box{padding: 0px 20px;}
+.ah_div .ah_form_div .ah_search_form .btn_box button{background:#ec3d40;letter-spacing: 2px;line-height: 30px;height: 30px;font-size: 18px;}
+.ah_lpq{background:url(../images/sjz/bg_sjz_numwrapper.jpg) no-repeat;background-color: #eaeaea;background-size: 100% 180px;}
+.ah_lpq *{box-sizing:border-box;}
+.ah_lpq em{color: #c51e28;}
+.ah_lpq .anhui_num{    width: 320px;height: 179px;background: url(../images/sjz/bg_sjz_num.png) no-repeat;background-position: 5px 1px;background-size: 308px auto; }
+.ah_lpq .anhui_num p{color:#7d280a;}
+.ah_lpq .anhui_num p.current_num{padding: 96px 0 0 0px; font-size:28px;line-height: 42px;margin: 0 63px;font-weight: bold;}
+.ah_lpq .anhui_num p.current_num i{background: url(../images/bg_num_content.jpg) no-repeat;background-size: 36px auto;display: block;width: 37px;height: 46px;text-align: center;float: left;padding-left: 0px;}
+.ah_lpq .anhui_num p.p_text{font-size: 12px;font-weight: normal;    margin: 47px 60px 0 0;line-height: 14px;text-align: right;}
+.ah_lpq .step_part img{width: 100%; }
+
+.ah_lpq .anhui_step{margin-top: 28px;}
+.ah_lpq .anhui_step h1{font-size: 19px;font-weight: bold;color: #333;width: 232px;height: 25px;margin: 0 auto;border: 1px solid #bababa;position: relative;}
+.ah_lpq .anhui_step h1 span{position: absolute;top:-16px;left: 14px;display: block;width: 205px;text-align: center;background: #eaeaea;}
+.ah_lpq .anhui_step h1 em{font-size: 22px;}
+.ah_lpq .anhui_step h2{margin: 0;padding: 0;padding-top:4px;font-size: 12px;line-height: 18px;}
+.ah_lpq .anhui_step ul{margin: 0 auto;width: 300px;}
+.ah_lpq .anhui_step ul li{width: 36%;float: left;text-align: center;  color: #333;}
+.ah_lpq .anhui_step ul li.mid{width: 28%;}
+.ah_lpq .anhui_step ul li p{font-size: 12px;line-height: 18px;}
+.ah_lpq .anhui_step ul li img{width: 73px;}
+.ah_lpq .anhui_step .step_box{padding: 20px 0 28px 0;background: -webkit-linear-gradient(top,#eaeaea,#eaeaea 68px,#fff 69px,#fff 100%);}
+.ah_lpq .anhui_company{background: url(../images/sjz/idx_bg_58_05_2.jpg) no-repeat;    background-size: 100% 272px;padding-top: 32px;}
+.ah_lpq .anhui_company h1{width: 293px;height: 45px;margin: 0 auto;border: 1px solid #c1a53d;position: relative;}
+.ah_lpq .anhui_company h1 span{position: absolute;top:-15px;left: 7px;display: block;width: 276px;text-align: center;background: #fed741;font-size: 12px;line-height: 24px;}
+.ah_lpq .anhui_company h1 span i{font-size: 17px;font-weight: bold;color: #333;}
+.ah_lpq .anhui_company ul{width: 250px;margin: 15px auto 0px auto;padding-bottom: 12px;}
+.ah_lpq .anhui_company ul li{width: 110px; height: 40px;line-height:40px;background: #fff; margin-bottom: 13px;text-align: center;}
+.ah_lpq .anhui_company ul li img{width: 86px;vertical-align: middle;}
+.chengdu_details{color: #fff;background-color: #01081a;}
+.chengdu_details .bg_top{background: url(../images/bg_chengdu_details.jpg) no-repeat center bottom;background-size:100% auto;background-color: #fff;height: 65px;display: block;}
+.chengdu_details h1{font-size: 16px;line-height: 20px;padding: 8px 0;color: #fff;font-weight: normal;text-align: center;}
+.chengdu_details ul{width: 294px;margin: 0 auto;}
+.chengdu_details ._list{background: url(../images/sjz/idx_bg_58_06.jpg) no-repeat;background-size: 100%;    background-color: #000;}
+.chengdu_details ul li{width: 98px;float: left;}
+.chengdu_details ul li p{font-size: 10px;text-align: center;padding: 2px 0 6px 0;-webkit-text-size-adjust:none;}
+.chengdu_details ul li span{font-size: 24px;line-height: 40px;display: block;width: 86px;margin: 0 auto;text-align: left;padding-left: 8px;background: #f6ad1d url(../images/bg_chengdu_coupon.jpg) no-repeat center center;background-size: 78px auto;}
+.chengdu_details .details_content{margin-top: 6px;text-align: center;font-size: 12px;line-height: 18px;}
+.chengdu_details .details_content h1{font-size: 12px;line-height: 18px;margin-top: 16px;padding: 0;}
+.chengdu_details .copyright_content{background: url(../images/sjz/idx_bg_sjz_plane.png) no-repeat; background-size: 14%;padding-top: 18px;font-size: 12px;padding-bottom:24px;text-align: center;line-height: 28px;}
+.chengdu_details .copyright_content .p_date{font-size: 10px;line-height: 14px;font-weight: bold;vertical-align: middle;}
+.chengdu_details .copyright_content .p_date img{height: 12px;vertical-align: middle;margin-top: -4px;}
+.qa_content{background: url(../images/sjz/bg_question.jpg) no-repeat;background-size: 256px auto;background-position:26px 36px;background-color: #fff;padding-top: 120px;padding-bottom: 50px;}
+.qa_content h2{margin: 16px 18px 4px 18px;}
+.qa_content h2 img{height: 17px;}
+.qa_content p{font-size: 12px;line-height: 22px;margin: 0 10px;padding: 0 8px 10px 8px;text-indent: 24px;border-bottom: 1px solid #cecece;}
+.qa_content p.no_border{border-bottom: none;}
+#licenseNo{text-transform: uppercase;}
+._prompt_form h1 {
+    padding: 10px 0;
+    font-size: 16px;
+}

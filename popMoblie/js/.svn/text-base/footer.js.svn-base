@@ -1,0 +1,32 @@
+(function(){
+	function printFooter(){
+		var footerHtml = "<div class=\"_footer\">" +
+	"	<div class=\"_footer_line\"></div>" +
+	"	<div class=\"_footer_summary\">" +
+	"		<div class=\"_link\"><a href='/stc/about'>关于我们</a></div>" +
+	"		<div class=\"_link\"><a href='/stc/feedback'>用户反馈</a></div>" +
+	"		<div class=\"_link\"><a href='/stc/checkinsure'>保单验真</a></div>" +
+	"		<div class=\"_link _last_link\"><a href='/stc/help'>使用帮助</a></div>" +
+	"		<div class=\"_tel\"><div><img src=\"/images/idx_foot_tel.png\"/></div>客服热线 400-610-9099</div>" +
+	"		<div class=\"_email\"><div><img src=\"/images/idx_foot_email.png\"/></div>电子邮箱：<a href=\"mailto:kf@yibaoxian.com\">kf@yibaoxian.com</a></div>" +
+	"		<div class=\"_clear\"></div>" +
+	"	</div>" +
+	"	<div class=\"_footer_copyright\">" +
+	"		©2014 易保险 All rights reserved&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;北京融保网络技术有限公司&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;京ICP备14036448号" +
+	"	</div>" +
+	"</div>";
+		document.write(footerHtml);
+	}
+	printFooter();
+	var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1253133334'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/z_stat.php%3Fid%3D1253133334%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));
+	var _paq = _paq || [];
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//182.92.231.145:9090/piwik/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', 1]);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+})();

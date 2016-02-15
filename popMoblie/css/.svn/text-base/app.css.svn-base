@@ -1,0 +1,178 @@
+@charset "utf-8";
+/*common class*/
+._clearfix { *zoom: 1;}
+._clearfix:before, ._clearfix:after{display: table; line-height: 0;   content: "";}
+._clearfix:after{clear: both;}
+._mt10{margin-top: 10px;}
+button, button._red_border, button._background_gray, button._background_red{border-radius: 6px; width: 100%; font-size: 1.25em;}
+button, button._background_gray, button._background_red{color: #FFFFFF; height: 46px; padding: 0; border: none;}
+button._red_border{border: 1px solid #ec3d40; background: #FFFFFF; color: #ec3d40; height: 44px; }
+button._background_red{background: #ec3d40;}
+button._background_gray{background: #bcbfc2;}
+button._open_dialog_btn{float: right; width: 30%; height: 32px; margin-top: 10px; margin-bottom: 20px; font-size: 14px; border-radius: 4px; background: #ec3d40;}
+._banner_box img{width: 100%;}
+/*规定页面所有input的颜色及默认提示的颜色*/
+input{color: #000000;}
+input::-webkit-input-placeholder{color: #DDDDDD;}
+header h1{ font-size: 1.2em; margin: 0 10px;}
+header span._prev{background: url(../images/icon/icon_prev.png) no-repeat; background-size:auto 100%; height: 20px; float: left; text-indent: 14px; line-height: 20px; font-size: 0.75em; color: #666666; vertical-align: middle; margin: 0.4em 0;}
+header span._more{background: url(../images/icon/icon_more.png) no-repeat; background-size:auto 4px; background-position: center center; width: 20px; float: right; height: 20px; margin: 0.4em 0;}
+._mt10{margin-top: 10px;}
+._mt20{margin-top: 20px;}
+._m20{margin:20px}
+._mlr20{margin: 0 20px 20px 20px;}
+._switch_btn{display: block; height: 31px; width: 51px; float: left; background: url(../images/icon/switch_btn.png) no-repeat; background-size: 51px 62px; border-radius: 16px; 
+}
+._border_bottom_gray{border-bottom: 1px solid #d2d2d2;}
+/*index*/
+._idx_page form{width: 100%; display: block; line-height: 60px; background: #FFFFFF; font-size: 1.125em; border-top: 1px solid #d2d2d2; border-bottom: 1px solid #d2d2d2;}
+._idx_page form label{display: block; width: 28%; padding-right: 2%; background: #FFFFFF; text-align: right; float: left;}
+._idx_page form input{display: block; width: 70%; float: left; line-height: 60px;}
+._idx_page form ._div_row{position: relative;}
+._idx_page form span{height: 60px; width: 36px; display: block; position: absolute; right: 10px;}
+._idx_page form span._get_location{background: url(../images/icon/icon_location.png) no-repeat; background-size: auto 20px; background-position: center center;}
+._idx_page form span._clear_txt{background: url(../images/icon/icon_input_error.png) no-repeat; background-size: auto 14px; background-position: center center;}
+/*about us*/
+._page_about_us{color: #323232; font-size: 0.875em; line-height: 1.54em; text-align: center;}
+._page_about_us p{padding: 10px;}
+._page_about_us ._about_us_logo{margin: 40px auto;}
+._page_about_us ._about_us_copyright{padding-top: 20px;}
+._page_about_us ._about_us_copyright p{padding: 0;}
+/*Q & A */
+._q_and_a{color: #777777; font-size: 0.875em; line-height: 1.54em; margin: 0 10px; max-width: 980px; padding: 10px 0;}
+._q_and_a h1{text-indent: 1.8em; font-size: 1.27em; line-height: 2em; border-bottom: 1px solid #c7c7c7; background-size: 50% 50%; background: url(../images/q_and_a_icon.png) 0 50% no-repeat;}
+._q_and_a p{padding: 4px 0 20px 2em; text-indent: -2em;}
+/*feedback*/
+._page_feedback{max-width: 1000px; padding-top: 20px;}
+._page_feedback form{margin: 10px; line-height: 1.6em; font-size: 1em;}
+._page_feedback form textarea, ._page_feedback form input{border-radius: 6px; border: 1px solid #aeaeae; margin: 0; padding: 0; display: block; width: 100%; outline: none;}
+._page_feedback form textarea{height: 136px; border-radius: 6px; border: 1px solid #aeaeae; margin: 0; padding: 0; display: block; width: 98%; outline: none; padding: 6px 1%;}
+._page_feedback form input{height: 38px; width: 98%; padding: 0 1%;}
+._page_feedback form textarea:hover, ._page_feedback form input:hover{border: 1px solid #f38f00;}
+._page_feedback strong{margin: 0px 10px 10px 10px; display: block; font-size: 1em; line-height: 1.2em; font-weight: normal;}
+._page_feedback form label{display: block; }
+._page_feedback form ._btn_box{margin: 20px auto; width: 60%;}
+/*bind card*/
+._card_form{background: #FFFFFF; border-top: 1px solid #CCCCCC; border-bottom: 1px solid #CCCCCC; line-height: 3em; }
+._card_form ._form_row, ._form_row_last{margin: 0 10px;}
+._card_form ._form_row{border-bottom: 1px solid #CCCCCC;}
+._card_form label{display: block; width: 38%; float: left; color: #777777;}
+._card_form input{display: block; width: 62%; line-height: 1em; float: left; padding-top: 1em; padding-bottom: 1em;}
+._button_box{padding: 30px 6.25%;}
+
+/* add by wangxf 作为公共底部btn css*/
+.divide {
+	height: 70px;
+}
+.div-btn {
+	display:table;
+	height:60px;
+	margin-top:10px;
+	background-color: #474747;
+	position:fixed; 
+	bottom:0 ;
+	width: 100%;
+	max-width: 1000px;
+	min-width: 320px;
+	margin: 0 auto;
+}
+.div-btn-left {
+	display:table-cell;
+	width:60%;
+	height:60px
+}
+.div-btn-right {
+	display:table-cell;
+	width:40%;
+	text-align:center;
+	vertical-align:middle;
+	height:60px;color:#fff;
+	background-color:#e4393c;
+	font-size:20px;
+}
+
+/* add by wangxf 作为车辆填写进度公共 css*/
+.schedule {
+	height: 54px;
+	overflow: hidden;
+	background-color: #fff;
+	
+}
+.progress {
+	height: 10px;
+	margin: 30px 15px 20px 20px;
+	background-color: #f5f5f5;
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
+	box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
+	position: relative;
+}
+.progress-text {
+	position: relative;
+	}
+.progress-bar {
+	
+	height: 10px;
+	border: none;
+	margin-left: 5px;
+	border-radius: 20px;
+	font-size: 12px;
+	line-height: 20px;
+	color: #fff;
+	text-align: center;
+	background-color: #e4393c;
+	-webkit-box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
+	box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
+	-webkit-transition: width .6s ease;
+	-o-transition: width .6s ease;
+	transition: width .6s ease;
+	
+}
+.badge {
+	position: absolute;
+	padding: 8px 14px;
+	margin-top:-15px;
+	font-size: 16px;
+	font-weight: 700;
+	text-align: top;
+	white-space: nowrap;
+	vertical-align: top;
+	border-radius: 20px;
+}
+.badge-selected {
+ 	background-color: #e4393c;
+ 	color:#fff;
+}
+.badge-unselected {
+ 	background-color: #EEEEEE;
+ 	color: #999;
+}
+.badge-text {
+	padding: 8px 14px;
+	font-size: 16px;
+	font-weight: 700;
+	
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: top;
+	border-radius: 10px;
+	position: absolute;
+}
+.badge-text-selected {
+	color:#ff5a00
+}
+.badge-text-unselected {
+	color: #999;
+}
+/* add by wangxf 作为锯齿分割线公共 css*/
+.sawtooth{
+	background-image: url('../images/icon/icon_sawtooth.jpg');background-repeat: repeat-x;height:5px;
+}
+/* add by wangxf input type=date 不支持placeholder 模拟placeholder css*/
+._middle_show {
+	position:absolute;
+	height:100%;
+	left:0px;
+	line-height:58px;
+	color:#ddd;
+}

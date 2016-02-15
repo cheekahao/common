@@ -1,0 +1,25 @@
+/**
+ * 
+ */
+var hrf=parent.location.href;
+$(".navlist").find("li").removeClass("current");
+$(".navlist").find("a").removeClass("cur");
+if(hrf.indexOf('/activity/')>0) {
+	$(".navlist").find("[href*='activity']").parent().addClass("current");
+	$(".navlist").find("[href*='activity']").addClass("cur");
+}
+else if(hrf.indexOf('/brandzone/')>0) {
+	$(".navlist").find("[href*='brandzone']").parent().addClass("current");
+	$(".navlist").find("[href*='brandzone']").addClass("cur");
+}
+else if(hrf.indexOf('/news/')>0) {
+	$(".navlist").find("[href*='news']").parent().addClass("current");
+	$(".navlist").find("[href*='news']").addClass("cur");
+}
+else if(hrf.indexOf('/checkinsure/')>0) {
+	$(".navlist").find("[href*='checkinsure']").parent().addClass("current");
+	$(".navlist").find("[href*='checkinsure']").addClass("cur");
+}else {
+	$(".navlist").find("li:eq(0)").addClass("current");
+	$(".navlist").find("li:eq(0)").find("a").addClass("cur");
+}

@@ -1,0 +1,215 @@
+//city-list
+(function($){
+		var cityListHtml = '<section id="city_select">'+
+'			<header class="_header_price">'+
+'				<a class="_left" onclick="">'+
+'				</a>'+
+'				<h1>城市选择</h1>'+
+'			</header>'+
+'			<div class="_search_box">'+
+'				<div class="_search_wrapper">'+
+'					<div><input type="text" id="searchText" placeholder="举例：bj/beijing/北京" autocomplete="off" maxlength="50" /></div>'+
+'				</div>'+
+'			</div>'+
+'			<div id="_list_div">'+
+'				<ul class="list-unstyled _prov_group">'+
+'					<li>'+
+'						<div class="_prov">常用城市</div>'+
+'						<div>'+
+'							<ul class="list-group list-unstyled _city_group"></ul>'+
+'						</div>'+
+'					</li>'+
+'				</ul>'+
+'			</div>'+
+'			<div id="_auto_complete_list" style="display: none">'+
+'				<ul class="list-group list-unstyled _city_group"></ul>'+
+'			</div>'+
+'		</section>';
+	if($("#city_select").length<1){
+			$("body").append(cityListHtml);
+		}
+	function createCityLi(city) {
+		var str="<li class=\"list-group-item\" value='" + city.cityCode + "'>"+city.cityName+
+					"<input type='hidden' value='" +city.cityCode+"' name='cityCode'/>" +
+					"<input type='hidden' value='"+city.license+"' name='licenseNo'/></li>";
+		return str;
+	}
+
+	function loadCitys() {
+		var city;
+		for(var i=0;i<8;i++) {
+			city=insureCity[i];
+			$("#city_select ._prov_group").find("._city_group").first().append(createCityLi(city));//.append("<li class=\"list-group-item\">"+city.cityName+"<input type='hidden' value='" +city.cityCode+"'/> </li>");
+		}
+		var prov=null;
+		for(var i=8;i<insureCity.length;i++) {
+			city=insureCity[i];
+			if(city.provName!=prov){
+				$("#city_select ._prov_group").append("<li><div class='_prov'>"+city.provName+"</div><div><ul class='list-group list-unstyled _city_group'></ul>");
+				prov=city.provName;
+			}
+			$("#city_select ._prov_group").find("._city_group").last().append(createCityLi(city))
+		}
+		$("#city_select ._prov_group").find("._city_group").hide();
+		$("#city_select ._prov_group").find("._city_group").first().show();
+	}
+
+	function closeCitySelector() {
+		var city_input=$("#city_select").get(0).tragObj;
+		if (city_input.options.orgPage != null && city_input.options.orgPage.size() > 0) {
+			city_input.options.orgPage.show()
+		};
+		if (city_input.options.focusObj != null && city_input.options.focusObj.size() > 0) {
+			city_input.options.focusObj.get(0).scrollIntoView();
+		};
+		$("#city_select").hide();
+		if($.isFunction(city_input.options.callback)) {
+			city_input.options.callback();
+		}
+	}
+
+	function selectCity() {
+		var city_input=$("#city_select").get(0).tragObj;
+		city_input.options.cityNameInput.val($.trim($(this).text()));
+		city_input.options.cityCodeInput.val($.trim($(this).find(":hidden[name='cityCode']").val()))
+		city_input.options.licenseNoInput.val($.trim($(this).find(":hidden[name='licenseNo']").val()))
+
+		closeCitySelector();
+	}
+
+	function findCitys(str) {
+		str=str.toLowerCase().replace(" ","");
+		var citys=new Array();
+		for(var i=0;i<insureCity.length;i++) {
+			city=insureCity[i];
+			if (city.cityName.toLowerCase().indexOf(str)==0||
+				city.pinyin.toLowerCase().indexOf(str)==0||
+				city.jp.toLowerCase().indexOf(str)==0) {
+				citys.push(city)
+			}
+		}
+		return citys;
+	}
+
+	function searchTextChange(obj) {
+		var str=$.trim($(obj).val());
+		//如果搜索框内容为空，则显示默认列表
+		if(str=="") {
+			$("#_list_div").show();
+			$("#_auto_complete_list").hide();
+			return;
+		}
+
+		//查找城市
+		var citys=findCitys(str);
+		var citysHtml = "";
+		if (citys.length>0) {
+			for(var i=0;i<citys.length;i++) {
+				citysHtml+=createCityLi(citys[i]);
+			}
+		}
+		//填充内容
+		$("#_auto_complete_list ._city_group").html(citysHtml);
+		if ($("#_auto_complete_list ._city_group li").size() > 0) {
+			$("#_auto_complete_list ._city_group li").eq(0).addClass("_select");
+		}
+		
+
+		//显示列表
+		$("#_list_div").hide();
+		$("#_auto_complete_list").show();
+
+		//添加事件
+		$("#_auto_complete_list ._city_group li").click(selectCity);
+	}
+
+	function searchTextKeyPress(obj,event) {
+		var str=$.trim($(obj).val());
+		if (str == searchText_his) {
+
+			var licity=$("#_auto_complete_list ._city_group li._select");
+			if (licity.size()==0) {
+				licity=$("#_auto_complete_list ._city_group li:eq(0)");
+			}
+			switch(event.which) {
+			case 38://上箭头
+				if (licity.prev().size()>0) {
+					licity.removeClass("_select");
+					licity.prev().addClass("_select");
+				}
+				return;
+			case 40://下箭头
+				if (licity.next().size()>0) {
+					licity.removeClass("_select");
+					licity.next().addClass("_select");
+				}
+				return;
+			case 13://回车
+				licity.click();
+				return;
+			case 9:  //TAB
+			case 27: //ESC
+			case 37: //ARRLEFT
+			case 39: //ARRRIGHT
+				return;
+			}
+		}
+
+		searchText_his=str;
+
+		searchTextChange(obj);
+	}
+
+	/** 加载城市 **/
+	loadCitys();
+	/** 添加事件 **/
+	$("#searchText").focus(function() {
+		$("#_list_div").hide();
+		$("#_auto_complete_list").show();
+	}).bind("input keydown", function() {
+		searchTextKeyPress(this,event);
+	});
+
+	$("._prov").click(function(){
+		var _cg=$(this).next().find("._city_group");
+		$("._prov_group").find("._city_group").not(_cg).slideUp("fast");
+		var obj=$(this);
+		if (_cg.is(":visible")) {
+			_cg.slideUp();
+		} else {
+			_cg.slideDown("fast", function() {
+				$(obj).get(0).scrollIntoView();
+			});
+		}
+	});
+	$("._prov_group").find("._city_group li").click(selectCity);
+	$("#city_select header a").click(closeCitySelector);
+
+	//变量
+	var searchText_his="";
+	
+	$.fn.cityList = function(config) {
+		var options = {
+				cityCodeInput: null,	//接收citycode的地方
+				cityNameInput: null,	//接收cityName的地方
+				licenseNoInput: null,	//接收licenseNo的地方
+				orgPage: null,  		//原父页面
+				focusObj: null,			//选择了城市后进入视窗的元素
+				callback: null          //回调函数
+		};
+		options = $.extend(options, config);
+		
+		var me = $(this);
+		var me_this = $(this).get(0);
+		
+		me.click(function() {
+			if (options.orgPage != null) {
+				options.orgPage.hide();
+			}
+			$("#city_select").show();
+			$("#city_select").get(0).scrollIntoView();
+			$("#city_select").get(0).tragObj = $(this).get(0);
+		}).focus(function(){$(this).blur();});
+		me_this.options=options;
+	}
+})($);

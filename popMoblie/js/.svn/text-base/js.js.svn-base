@@ -1,0 +1,37 @@
+
+$(document).ready(function() {
+	/* Act on the event */
+	$(".menu ul li").on("click",function(){
+	$(this).addClass("hover").siblings().removeClass("hover");
+		var index=$(this).index();
+		$(".box .content").eq(index).show().siblings().hide();
+	
+	});
+	
+	//菜单
+	$("._sigle_tel img").click(function(){
+		$("._xl_menu").slideToggle();
+	});
+
+	//菜单
+	$("._right_btn img").click(function(){
+		$("._xl_menu").slideToggle();
+	});
+	
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

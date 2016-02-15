@@ -1,0 +1,194 @@
+(function($){
+
+$.fn.autoCity=function(){
+	var _this=this;
+	var insureCity= window['insureCity'];
+	var rowIndex=0;
+	var rowCount=0;
+function resetPos(){
+		var _w=_this.outerWidth();
+		var _h=_this.outerHeight();
+		var _x=_this.offset().left;
+		var _y=_this.offset().top;
+	   $("#drop_CityList").css({"width":_w,"top":_y+_h,"left":_x});
+	}
+
+      _this.keyup(function(event){
+		  if(event.keyCode > 40 || event.keyCode == 8 || event.keyCode ==32) {
+			 if( $.trim(_this.val())  =="") {$("#popCityList").show(); hideDrop();return};
+			 $("#popCityList").find("a").removeClass("current"); $("#popCityList").hide();
+		  	 var list=  getCityList($.trim(_this.val()));
+			if( list ){
+			    $("#drop_CityList ul:first").html(list)
+			    resetPos();//调整位置
+			    $("#drop_CityList").show()
+				$("#drop_CityList li").mouseenter(function(){  rowIndex=$(this).index(); setCurrentRow(rowIndex)   }).eq(0).trigger("mouseenter");
+				rowCount=$("#drop_CityList li").length;
+				$(document).bind("click.autocity",setCity)
+                                $(window).bind("resize.autocity",resetPos)
+			}else{
+			  hideDrop();
+				$(document).unbind("click.autocity")
+                                $(window).unbind("resize.autocity")
+			}
+		  }
+		 });
+
+		function setCurrentRow(index){
+			$("#drop_CityList li").eq(index).addClass("hover").siblings().removeClass("hover");
+		}
+
+	function getCityList(key){
+			  var html="";
+			  for(var i=0;i<insureCity.length;i++){
+				  var cityname=insureCity[i]['cityName'],pinyin=insureCity[i]['pinyin'],jp=insureCity[i]['jp'],cityCode=insureCity[i]['cityCode'],carID=insureCity[i]['license'];
+			      if(cityname.indexOf(key) != -1){
+				       html+="<li data-city-code=\""+cityCode+"\"  data-city-name=\""+cityname+"\" data-carID=\""+carID+"\">"+cityname.replace(key,"<strong>"+key+"</strong>")+" ("+pinyin+")</li>"  ;continue ;
+				  }
+				  if(pinyin.toLowerCase().indexOf(key)  != -1){
+				       html+="<li data-city-code=\""+cityCode+"\" data-city-name=\""+cityname+"\" data-carID=\""+carID+"\">"+cityname+" ("+pinyin.toLowerCase().replace(key,"<strong>"+key+"</strong>")+")</li>"  ;continue ;
+				  }
+				  if(jp.indexOf(key)  != -1){
+				       html+="<li data-city-code=\""+cityCode+"\"  data-city-name=\""+cityname+"\" data-carID=\""+carID+"\">"+cityname+" ("+pinyin.toLowerCase()+")</li>"  ;
+				  }
+			  }
+			  return html;
+			}
+
+function setCity(){
+	var currentEL=$("#drop_CityList li").eq(rowIndex);
+	if(currentEL.length == 0) return;
+     _this.val( currentEL.attr("data-city-name") )
+    $("#cityCode").val(currentEL.attr("data-city-code"))
+    $("#carId").focus().val(currentEL.attr("data-carID"));
+     hideDrop();
+     _this.blur();
+}
+
+function hideDrop(){
+    $("#drop_CityList ul:first").empty()
+    $("#drop_CityList").hide()
+}
+
+function prev(){
+    if( rowIndex > 0)  {
+	     rowIndex --
+	}else{
+   	    rowIndex =rowCount-1
+	}
+    setCurrentRow(rowIndex)
+}
+function next(){
+    if( rowIndex <  rowCount -1)  {
+	     rowIndex++
+	}else{
+   	    rowIndex =0
+	}
+    setCurrentRow(rowIndex)
+}
+
+$(document).keydown(function(event){//up=38 down=40 enter=13
+  switch(event.keyCode) {
+	case 13:
+	setCity();  return false;
+	break;
+	case 38:
+	prev();  return false;
+	break;
+	case 40:
+	next();  return false;
+	break;
+  }
+});
+
+if($("#drop_CityList").length==0){
+            $(document.body).append("<div id=\"drop_CityList\"><ul></ul></div>");
+			                                resetPos()
+	}
+}
+
+
+$.fn.popCity=function(){
+	var _this=this;
+    var insureCity= window['insureCity'];
+
+	function uniqueProv(key,arr){
+		for(var i=0;i<arr.length;i++){
+			if(arr[i]["provCode"] === key) {  return true;}
+		}
+		return false;
+	 }
+	 function _substr(str){
+		 return str.substr(0,5)
+	 }
+
+	function getProvList(){
+      var prov1=[], prov2=[];
+		$("#popCityList ul.prov").empty();
+		$("#popCityList ul.zxs").empty();
+  
+		for(var i=0 ;i < 8 ; i++){//out  hotcity
+		   $("#popCityList ul.zxs").append('<li><a href="javascript:;" data-carid="'+insureCity[i].license+'" data-citycode="'+insureCity[i].cityCode+'">'+_substr(insureCity[i].cityName)+'</a></li>')
+		}
+		for(var j=8 ;j < insureCity.length ; j++){
+		     prov1.push({"provName":insureCity[j].provName , "provCode":insureCity[j].provCode})
+		}
+		for(var m=0; m < prov1.length; m++){
+		   if ( uniqueProv(prov1[m].provCode , prov2) == false  ) { prov2.push(prov1[m])}
+		}
+		for(var i=0;i<prov2.length; i++){// out prov
+		   $("#popCityList ul.prov").append('<li><a href="javascript:;" data-provcode="'+prov2[i].provCode+'">'+_substr(prov2[i].provName)+'</a></li>')
+		}
+	}
+    function resetPosition(){
+				var x= $(window).width() > (_this.offset().left +$("#popCityList").outerWidth())?(_this.offset().left) : ($(window).width() - $("#popCityList").outerWidth())
+				$("#popCityList").css({left:x})
+	}
+	function getCityList(provCode){
+		$("#popCityList ul.city").show().empty();
+		$.each(insureCity,function(index,el){
+				 if(el['provCode'] == provCode && index > 7){
+						 $("#popCityList ul.city").append("<li><a data-cityCode='"+el['cityCode']+"' data-carId='"+el['license']+"' href='javascript:;'>"+_substr(el['cityName'])+"</a></li>")
+				 }
+		})
+	}
+
+	$("#popCityList .prov").on("click","a",function(event){
+		     event.stopPropagation();
+            $("#popCityList .prov a").removeClass("current");
+			$(this).addClass("current");
+            var code= $(this).attr("data-provCode");
+            getCityList(code)
+	})
+
+	$("#popCityList").on("click","a[data-cityCode]",function(){
+	       var cityCode=$(this).attr("data-cityCode")
+		   var cityName=$(this).text();
+		   var carID=$(this).attr("data-carId")
+		  _this.val(cityName)
+          $("#cityCode").val(cityCode)
+		     _this.blur();
+		  $("#carId").focus()
+		  $("#carId").val(carID)  
+	  })
+	  _this.click(function(event){
+		event.stopPropagation()
+			if($("#drop_CityList").is(":visible")) {
+				return;
+			}else{
+				var y=_this.offset().top+29;
+				var x= $(window).width() > (_this.offset().left +$("#popCityList").outerWidth())?(_this.offset().left) : ($(window).width() - $("#popCityList").outerWidth())
+				$("#popCityList").css({left:x,top:y}).show();
+			}
+			
+	  })
+	$(window).resize(function(){
+	  resetPosition()
+	  })
+	  $(document).click(function(){
+	        $("#popCityList").hide();
+	  })
+  getProvList();
+}
+})(jQuery)
+

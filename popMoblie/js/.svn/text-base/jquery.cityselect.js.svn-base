@@ -1,0 +1,42 @@
+(function($){
+  $.fn.citySelect=function(options){
+     var defaults = {    
+         def_prov: null,    
+         def_city: null    
+     };
+    var opt=$.extend({},defaults,options);
+	var me=this;
+	var provBox=me.find(".prov").eq(0);
+	var cityBox=me.find(".city").eq(0);
+	function setProv(){
+	   var html="<option value=''>请选择</option>";
+	   $.each(allCitys,function(index,el){
+	           html+="<option value='"+el['provName']+","+el['provCode']+"'>"+el['provName']+"</option>";
+	   })
+       provBox.html(html);
+       if(typeof opt.def_prov == "string" && opt.def_prov.length > 0){try{console.log("set prov");}catch(e){};
+	      provBox.find("option:contains("+opt.def_prov+")").attr("selected",true)
+	   }
+		provBox.bind("change",function(){
+	         setCity( $(this).find("option:selected").text() )
+	   }).trigger("change")
+	}
+   function setCity(pName){
+	   var html="<option value=''>请选择</option>";
+	 //  if(pName == "请选择"){return};
+       $.each(allCitys,function(index,el){
+		      if (pName == el['provName']){
+			     $.each( el['citylist'] , function(i,city){
+				     html+="<option value='"+city['cityName']+","+city['cityCode']+"'>"+city['cityName']+"</option>";
+				 })
+			     return false;
+			  }
+	   })
+      cityBox.html(html)
+      if(typeof opt.def_city == "string" && opt.def_city.length > 0){
+	      cityBox.find("option:contains("+opt.def_city+")").attr("selected",true)
+	   }
+   }
+  setProv()
+  }
+})(jQuery)

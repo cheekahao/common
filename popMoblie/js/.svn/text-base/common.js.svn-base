@@ -1,0 +1,365 @@
+//revised by haozj 2015/5/26
+function changeStatus($obj, className) {
+		$obj.removeClass().addClass(className);
+	}
+	//原来的js
+var Wi = [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2, 1]; // 加权因子;
+var ValideCode = [1, 0, 10, 9, 8, 7, 6, 5, 4, 3, 2]; // 身份证验证位值，10代表X;	
+
+function isTrueValidateCodeBy18IdCard(a_idCard) {
+	var sum = 0; // 声明加权求和变量   
+	if (a_idCard.length != 18) {
+		return false;
+	}
+	var validStr = a_idCard[17];
+	if (a_idCard[17].toLowerCase() == 'x') {
+		validStr = 10; // 将最后位为x的验证码替换为10方便后续操作   
+	}
+	for (var i = 0; i < 17; i++) {
+		sum += Wi[i] * a_idCard[i]; // 加权求和   
+	}
+	valCodePosition = sum % 11; // 得到验证码所位置   
+	if (validStr == ValideCode[valCodePosition]) {
+		return true;
+	}
+	return false;
+}
+
+function isValidityBrithBy18IdCard(idCard18) {
+	var year = idCard18.substring(6, 10);
+	var month = idCard18.substring(10, 12);
+	var day = idCard18.substring(12, 14);
+	var temp_date = new Date(year, parseFloat(month) - 1, parseFloat(day));
+	// 这里用getFullYear()获取年份，避免千年虫问题   
+	if (temp_date.getFullYear() != parseFloat(year) || temp_date.getMonth() != parseFloat(month) - 1 || temp_date.getDate() != parseFloat(day)) {
+		return false;
+	}
+	return true;
+}
+
+function isValidityBrithBy15IdCard(idCard15) {
+	var year = idCard15.substring(6, 8);
+	var month = idCard15.substring(8, 10);
+	var day = idCard15.substring(10, 12);
+	var temp_date = new Date(year, parseFloat(month) - 1, parseFloat(day));
+	// 对于老身份证中的你年龄则不需考虑千年虫问题而使用getYear()方法   
+	if (temp_date.getYear() != parseFloat(year) || temp_date.getMonth() != parseFloat(month) - 1 || temp_date.getDate() != parseFloat(day)) {
+		return false;
+	}
+	return true;
+}
+
+function showMessage(msg, icon, callback) {
+	if ($("#_msg_box_div_wrapper").size() <= 0) {
+		$("body").append("<div id='_msg_box_div_wrapper'><div id='_msg_box_div'></div></div>");
+	}
+
+	var icon_img = "";
+	$("#_msg_box_div").html(msg);
+	$("#_msg_box_div_wrapper").slideDown();
+
+	setTimeout(function() {
+		$("#_msg_box_div_wrapper").fadeOut();
+	}, 2500);
+}
+
+function checkForm(form, callback) {
+	var result = true;
+	var formElement = $(form).find("input,textarea,select");
+	var obj = null;
+	for (var i = 0; i < formElement.size(); i++) {
+		obj = formElement.eq(i);
+
+		result = checkInput(form, obj);
+		if (!result) break;
+	}
+
+	if (!result) {
+		if (callback != undefined && $.isFunction(callback)) {
+			callback(obj);
+		}
+	}
+	return result;
+}
+
+function checkInput(form, obj) {
+	var result = true;
+	if (!obj.is(":visible")) return true;
+
+	var val = $.trim(obj.val());
+	if (val == "" && obj.attr("nullmsg") != undefined && $.trim(obj.attr("nullmsg")) != "") {
+		showMessage(obj.attr("nullmsg"));
+		return false;
+	}
+	if (val != "" && obj.attr("datatype") != undefined && $.trim(obj.attr("datatype")) != "" &&
+		obj.attr("errormsg") != undefined && $.trim(obj.attr("errormsg")) != "") {
+		var reg = null;
+
+		switch (obj.attr("datatype")) {
+			case "vehicleModelName":
+				var reg1 = /^\d{6,16}$/;
+				if (!reg1.test($("[name='vehicleCode']").val()) ||
+					$("#checkVehicleName").val() != $("input[name='searchCode']").val()) {
+					showMessage(obj.attr("errormsg"));
+					result = false;
+					break;
+				}
+				break;
+			case "idcard":
+				var b = false;
+
+				if (val.length == 15) {
+					b = isValidityBrithBy15IdCard(val);
+				} else if (val.length == 18) {
+					var a_idCard = val.split(""); // 得到身份证数组   
+					b = isValidityBrithBy18IdCard(val) && isTrueValidateCodeBy18IdCard(val);
+				} else {
+					b = false;
+				}
+				if (!b) {
+					showMessage(obj.attr("errormsg"));
+					result = false;
+					break;
+				}
+				break;
+			case "cityCode":
+				if (/^\d{6}$/.test($(form).find("[name='cityCode']").val()) === false) {
+					showMessage(obj.attr("errormsg"));
+					result = false;
+					break;
+				}
+				break;
+			case "invitationCode":
+				if (!/^[A-Za-z0-9]{4}$/.test(val)) {
+					showMessage(obj.attr("errormsg"))
+					result = false;
+					break;
+				}
+				var b = false;
+				$.ajax({
+					url: "checkInvitationCode?code=" + $(obj).val(),
+					async: false,
+					success: function(data) {
+						b = (data != "0")
+					}
+				})
+				if (!b) {
+					showMessage(obj.attr("errormsg"))
+					result = false;
+					break;
+				}
+				break;
+			case "p":
+				reg = eval("/" + obj.attr("pattern") + "/");
+
+				if (reg != null && !reg.test(val)) {
+					showMessage(obj.attr("errormsg"));
+					result = false;
+					break;
+				}
+				break;
+			default:
+				reg = eval(obj.attr("datatype"));
+
+				if (reg != null && !reg.test(val)) {
+					showMessage(obj.attr("errormsg"));
+					result = false;
+					break;
+				}
+				break;
+		}
+	}
+
+	var min = $(obj).attr("min");
+	var max = $(obj).attr("max");
+
+	if (min != undefined && val < min) {
+		var s = "";
+		if ($(obj).attr("rangeMsg") != undefined) {
+			s += $(obj).attr("rangeMsg");
+		}
+		s += "不能小于" + min;
+		showMessage(s);
+		result = false;
+	}
+	if (max != undefined && val > max) {
+		var s = "";
+		if ($(obj).attr("rangeMsg") != undefined) {
+			s += $(obj).attr("rangeMsg");
+		}
+		s += "不能大于" + max;
+		showMessage(s);
+		result = false;
+	}
+
+	return result;
+}
+
+(function($){
+    $.fn.extend({
+    /**以对话框形式打开*/
+    openDialog : function(config, callback){
+        var self=this;
+ //       self.show();
+        var defaultConfig={
+            maskSetClose: false,   //是否点击mask关闭对话框
+            colseObj: null,        //除wrapper、mask以外关闭对话框的，点击关闭的元素
+            offset: null           //对话框的偏移量
+            }
+        var options = $.extend(defaultConfig, config);  
+        
+        //设置遮罩层
+        if($("body ._dialog_div_mask").length==0){$("body").append("<div class='_dialog_div_mask'></div>");}
+        var offsetTop = $("html").scrollTop();
+        if (options.offset != null) offsetTop -= offset;
+        //if($("body ._dialog_div_wrapper").size()==0){$("body").append("<div class=)}
+        if(self.parent("._dialog_div_wrapper").size()==0){self.wrap("<div class='_dialog_div_wrapper'></div>")}
+        //var bodyHeight = $("body").height();
+        //弹出对话框
+        var offtop = $(window).height()>self.height()?Math.floor(+($(window).height()-self.height())/4):0;
+        self.parent().css({"top":(offsetTop + offtop)+"px"});
+        $("._dialog_div_mask").css({"min-height":(offsetTop + offtop+self.parent().height()+20)+"px"});
+        //给遮罩层添加关闭事件
+        if(options.maskSetClose){
+            $("._dialog_div_mask").click(function() {
+                self.closeDialog();
+            });
+        }
+        //设置对话框位置
+        self.parent().fadeIn();
+        self.fadeIn();
+        if ($(":hidden._dialog_div_mask").size()>0) {
+            //弹出对话框
+            if (options.module == undefined || options.module == true) {
+                $("body").css({overflowX:"hidden",overflowY:"auto"});
+                $("html").css({overflowX:"hidden",overflowY:"hidden"});
+            }
+            $("._dialog_div_mask").fadeIn();
+        }
+        
+        self.find("._dialog_title a").click(function() {
+            self.closeDialog();
+        });
+        if ($.isFunction(callback)) {
+            callback();
+        }
+        return this;
+    },  
+    switchDialog : function(config,callback) {
+        $("._dialog_div_wrapper").hide();
+        $(this).openDialog(config,callback);
+        return this;
+    },
+    /**关闭以对话框形式打开的窗口*/
+    closeDialog : function(callback){
+        $("body,html").css({overflowX:"",overflowY:""});
+        this.hide();
+        this.parent().fadeOut();
+        $("._dialog_div_mask").fadeOut();
+        if ($.isFunction(callback)) {
+            callback();
+        }
+        return this;
+    },
+    //验证码倒计时函数
+    //验证码插件，re-edit by haozj
+        waiting:function(t){
+            var t= t || 60;
+            var _this=this;
+            var oldvalue=_this.val();
+            _this.get(0).oldvalue=oldvalue;
+            waitingLoop();
+            return this;
+            function waitingLoop(){
+                if(t >0){
+                    _this.attr("disabled","disabled");
+                    _this.val(t+"秒后重新发送");
+                    t--;
+                    _this.get(0).waitingTimer=setTimeout(waitingLoop.arguments.callee,1000);
+                }else{
+                    _this.val(oldvalue);
+                    _this.removeAttr("disabled");
+                }
+            }
+        },
+        stopWaiting:function() {
+            if (this.get(0).waitingTimer) {
+                clearTimeout(this.get(0).waitingTimer);
+                this.val(this.get(0).oldvalue);
+                this.removeAttr("disabled").removeClass("_input_disabled");
+            }
+        },
+    /*
+     * 倒计时插件，by haozj
+     * 需要传入一个截止日期，格式为yyyy,mth,dd,hh,mm,ss
+     * mth为月份，例如二月即为2
+     * 目前能且只能返回天时分秒
+     */
+    countDown:function(yyyy,mth,dd,hh,mm,ss){
+        var _this=this;
+        mth--;
+        var endDate = new Date(yyyy,mth,dd,hh,mm,ss); 
+        var tillNowSecs = (endDate - new Date()) / 1000;
+        (function(){
+        if(tillNowSecs > 0){
+            tillNowSecs = (endDate - new Date()) / 1000;
+            var dd = parseInt(tillNowSecs / 60 / 60 / 24, 10);//计算剩余的天数  
+            var hh = parseInt(tillNowSecs / 60 / 60 % 24, 10);//计算剩余的小时数  
+            var mm = parseInt(tillNowSecs / 60 % 60, 10);//计算剩余的分钟数  
+            var ss = parseInt(tillNowSecs % 60, 10);//计算剩余的秒数 ;
+            _this.text(checkTime(dd) + "天" + checkTime(hh) + "时" + checkTime(mm) + "分" + checkTime(ss) + "秒");           
+            setTimeout(arguments.callee,1000)
+        }else{
+            _this.text( "00天00时00分00秒");
+        }
+        })();
+        //数字小于10时前面加0
+        function checkTime(i){            
+            return i < 10?"0"+i:i;          
+        }
+    }
+}); 
+   
+})(jQuery);
+
+function formatDate(d) {
+	var strYear = d.getFullYear();
+	var strDay = d.getDate();
+	var strMonth = d.getMonth() + 1;
+	if (strMonth < 10) {
+		strMonth = "0" + strMonth;
+	}
+	if (strDay < 10) {
+		strDay = "0" + strDay;
+	}
+	return strYear + "-" + strMonth + "-" + strDay;
+}
+
+function getCurDate() {
+	return formatDate(new Date());
+}
+
+function getDate(index) {
+	var today = new Date();
+	var milliseconds = today.getTime() + 1000 * 60 * 60 * 24 * index;
+	var d = new Date();
+	d.setTime(milliseconds);
+	return formatDate(d);
+}
+
+$(document).ready(function() {
+	//菜单
+//	$("._right_btn a").click(function() {
+//		$("._xl_menu").slideToggle();
+//		return false;
+//	});
+
+//	var hideMenu = function() {
+//		$("._xl_menu").hide();
+//	}
+
+	//document.addEventListener("touchstart",hideMenu);
+	//document.addEventListener("click",hideMenu);
+
+//	$(window).scroll(hideMenu);
+});

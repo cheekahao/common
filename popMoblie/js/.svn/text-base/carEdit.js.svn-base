@@ -1,0 +1,51 @@
+function _initCarEditPannel(urlNoSearchCode,urlHaveSearchCode,cityOrgPage,citySelectBackPage){
+	$("#cityName").cityList({
+		cityCodeInput: $("#cityCode"),
+		cityNameInput: $("#cityName"),
+		licenseNoInput:$("#licenseNo"),
+		orgPage:cityOrgPage,
+		focusObj:citySelectBackPage
+	});
+
+	$("#searchCode").vehicleList({
+		searchCode:$("#searchCode").val(),
+		frameNoInput:$("#vehicleFrameNo"),
+		registerDateInput:$("#registerDate"),
+		noSearchCodeUrl:urlNoSearchCode,
+		haveSearchCodeUrl:urlHaveSearchCode,
+		selectCallback:function(vehicle) {
+			$("#vehicleId").val(vehicle.vehicleCode);
+			$("[name='vehicleCode']").val(vehicle.vehicleCode);
+			$("#searchCode").val(vehicle.searchCode);
+			$("#checkVehicleName").val(vehicle.searchCode);
+			$("[name='vehicleModelName']").val(vehicle.modelDesc);
+			$("#vehicleModelName").text(vehicle.modelDesc);
+			$("#vehicleModelName").parents(".vechicleDes").show();
+			$("._vehicle_model_div").slideUp();
+		}
+	});
+	$(":radio[name='specialCarFlag']").click(function(){
+		if($(this).val()=="1"){
+			$("#_special_div").slideDown();
+		} else {
+			$("#_special_div").slideUp();
+		}
+	});
+	
+	$("#registerDate").attr("max",getCurDate());
+	$("#specialCarDate").attr("max",getDate(-1));
+
+	$("#submitForm").click(function() {
+		if (checkForm($("#carEditForm"), function(obj) {
+			$(obj).blur(function() {
+				if (checkInput($("#carEditForm"),obj)) {
+					$(obj).removeClass('_has_error');
+				}
+			});
+			$(obj).addClass('_has_error');
+			$(obj).get(0).scrollIntoView();
+		})) {
+			$("#carEditForm").submit();
+		}
+	})
+}

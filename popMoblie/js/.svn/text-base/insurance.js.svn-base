@@ -1,0 +1,247 @@
+﻿// JavaScript Document
+
+function updatePageShow() {
+	$("._input_box_large").each(function() {
+		var obj = $(this).find(".insuranceLeftBtn");
+		if (obj == null) return true;
+		var selected = obj.is(":checked");
+		var $select = $(this).find('select');
+		var $buji = $(this).find('.insuranceRightBtn');
+		var bujiSelected = $buji.is(":checked");
+		if (selected) {
+			//选中状态
+			//改变整行外观
+			$(this).addClass('_input_box_selected');
+			//改变select
+			if ($select.length>0) {
+				if($select.css("display")=="none"){
+					$select.show().children("option[value='-1']").remove();
+					var insuranceMoney = $select.children("option:first").text();
+				    $select.siblings("span").text(insuranceMoney);
+				}
+				var insuranceMoney = $select.children("option:selected").text();
+				$select.siblings("span").text(insuranceMoney);
+			}
+			//不计免赔
+			if($buji.prop("disabled")){
+				$buji.prop("disabled",false);
+			}
+			if(bujiSelected){
+				$buji.siblings("span").removeClass().addClass('_buji');
+			}else{
+				$buji.siblings("span").removeClass();
+			}
+			//return true;
+		} else {
+			//未选中状态
+			$(this).removeClass('_input_box_selected');
+			//改变select
+			if ($select.length>0) {
+				$select.prepend("<option value='-1'>不投保</option>").val(-1).hide();
+				$(this).siblings("span").hide();
+			}
+			//不计免赔
+			$buji.prop("disabled",true).siblings("span").removeClass();		
+		}
+	})
+}
+
+$(function() {
+	updatePageShow();
+    //	菜单栏下拉
+	$("._right_btn").toggle(function(){
+		$("._sub_menu").slideDown();
+	},function(){
+		$("._sub_menu").slideUp();
+	});
+	//专家推荐结果及险种选择页面
+	//初始化页面的checkbox和select
+	var $insuranceCheckBox = $("input[class='insuranceLeftBtn']");
+	$insuranceCheckBox.change(function(){
+		updatePageShow();
+	});
+	$("select").change(function(){
+		updatePageShow();
+	});
+	//	不计免赔与主险逻辑
+	$("input[class='insuranceRightBtn']").change(function() {
+		var checkStatus=$(this).prop("checked");
+		var status=checkInsure($(this));
+		if(status){
+			updatePageShow();
+		}else{	
+			$(this).prop("checked",true);
+			updatePageShow();
+		}		
+	});
+	$("._insurance_label_right").click(function(){
+		var status= $(this).children('input').prop("disabled");
+		if(status){
+			showMessage("请先选择相应险种！");
+			console
+		}
+	});
+	
+//	$insuranceCheckBox.each(function() {
+//		$(this).change();
+//		var status = $(this).prop("checked");
+//		var $buji = $(this).parents("[class^=_input_box]").find("input[class='insuranceRightBtn']");;
+//		var $select = $(this).siblings("select");
+//		if (status) {
+//			changeBujiStatus($buji, "");
+//			changeInsuranceStatus(this, "_input_box_selected");
+//			if ($select) {
+//				var insuranceMoney = $select.children("option:selected").text();
+//				$(this).siblings("span").text(insuranceMoney);
+//			}
+//		}
+//	});
+	//立即比价提交按钮提交函数
+	$("#insuranceChooseSubmit").click(function() {
+		var chooseNum = 0
+		$insuranceCheckBox.each(function() {
+			var status = $(this).prop("checked");
+			if (status) {
+				chooseNum++;
+			}
+		});
+		if (!chooseNum) {
+			$("#insuranceChooseAdvise").hide();
+			$("#chooseErrorPrompt").show();
+			$(window).scrollTop(0);
+			return false;
+		} else {
+			$("#insuranceChooseAdvise").show();
+			$("#chooseErrorPrompt").hide();
+			$("#guideForm").submit();
+		}
+	});
+	//套餐切换tab函数
+	$("._expert_ban ul li").click(function() {
+		$(this).addClass("_hover").siblings().removeClass("_hover");
+	});
+	//专家分析结果详情展开收起函数
+	$("#guideSwitchBtn").toggle(function() {
+		$("._guide_result").slideDown(200, function() {
+			changeGuideSwitch("#guideSwitchBtn", '_switch_btn_down');
+		});
+	}, function() {
+		$("._guide_result").slideUp(200, function() {
+			changeGuideSwitch("#guideSwitchBtn", '_switch_btn_up');
+		});
+	});
+
+	function changeGuideSwitch(obj, className) {
+			var height = $("._guide_prompt_box").outerHeight();
+			console.log(height);
+			$(obj).removeClass().addClass(className).css('top', height - 7);
+		}
+		//险种选择及不计免赔选择函数
+
+//	function changeInsuranceCheckBoxStatus($obj) {
+//		$obj.change(function() {
+//			var status = $(this).prop("checked");
+//			var $buji = $(this).parents("[class^=_input_box]").find("input[class='insuranceRightBtn']");
+//			var $select = $(this).siblings("select");
+//			if (status) {
+//				changeInsuranceStatus(this, "_input_box_selected");
+//				if ($select.children().length > 2) {
+//					$select.show();
+//					//如果select框有不投保的选项，则去掉此选项
+//					if ($select.children("option[value='-1']").size()>0) {
+//						var tmp=$select.val();//暂存select原先的值
+//						//去掉不投保的选项
+//						$select.children("option[value='-1']").remove();
+//						if (tmp == "-1") {//如果原先的值为不投保，则默认选择第一个可选项
+//							$select.find("option").get(0).selected=true;
+//						} else {//否则恢复原先的选项
+//							$select.val(tmp);
+//						}
+//					}
+//					var insuranceMoney = $select.children("option:selected").text();
+//					$(this).siblings("span").text(insuranceMoney);
+//				};
+//				$select.change(function(event) {
+//					var insuranceMoney = $select.children("option:selected").text();
+//					$(this).siblings("span").text(insuranceMoney);
+//					event.stopPropagation();
+//					return false;
+//				});
+//				$select.click(function(event) {
+//					event.stopPropagation();
+//					return false;
+//				});
+//			} else {
+//				$(this).siblings("select").prepend("<option value='-1'>不投保</option>").val(-1);
+//				console.log($(this).siblings("select").val());
+//				changeInsuranceStatus(this, "_input_box_large");
+//				$buji.prop("checked", false);
+//				changeBujiStatus($buji, "");
+//				$select.hide();
+//
+//			}
+//		});
+//	}
+//
+//	function changeBujiStatus($obj, className) {
+//		var $obj = $obj.siblings('span');
+//		changeStatus($obj, className);
+//	}
+//
+//	function changeInsuranceStatus(obj, className) {
+//		var $obj = $(obj).parents("[class^=_input_box]");
+//		changeStatus($obj, className);
+//	}
+//	
+//	function changeStatus($obj, className) {
+//			$obj.removeClass().addClass(className);
+//		}
+
+	//专家推荐页面input与label连动函数
+	$("._insure_guide_radio").change(function() {
+		var status = $(this).prop("checked");
+		var $label = $(this).parent('label');
+		var $others = $(this).parent('label').siblings();
+		if (status) {
+			changeStatus($label, "_selected");
+			changeStatus($others, "");
+		}
+	});
+	
+	
+		
+		//判断checkBox有效性
+//		$("#cov_200,#cov_600,#cov_500,#cov_701,#cov_702").each(function() {
+////			if ($(this).is("select")) {
+//			if($(this).parents("[class^=_input_box]").find("input[class='insuranceRightBtn']").size()<=0) return;
+////			if ($(this).siblings("._insure_item_selector").find(":checkbox").size()<=0) return;
+//				
+//			if ($(this).attr("checked")!= "checked") {
+//				setDisabled($(this).parents("[class^=_input_box]").find("input[class='insuranceRightBtn']"), true);
+//			} else {
+//				setDisabled($(this).parents("[class^=_input_box]").find("input[class='insuranceRightBtn']"), false);
+//			}
+//			if ($("ck_"+$(this).attr("id")).attr("checked")!= "checked") {
+//				setDisabled($("ck_"+$(this).attr("id")).parents("[class^=_input_box]").find("input[class='insuranceRightBtn']"), true);
+//			} else {
+//				setDisabled($("ck_"+$(this).attr("id")).parents("[class^=_input_box]").find("input[class='insuranceRightBtn']"), false);
+//			}
+////			}else{
+////				
+////			}
+//		});
+		
+		
+
+	
+	//配送地址页面input与label连动函数
+	$("#applicantFlag").change(function(){
+		var status = $(this).prop("checked");
+		var $label = $(this).parent('label');
+		if (status) {
+			changeStatus($label, "_selected");
+		}else{
+			changeStatus($label, "");
+		}
+	});
+});

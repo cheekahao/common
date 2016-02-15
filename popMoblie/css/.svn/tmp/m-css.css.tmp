@@ -1,0 +1,269 @@
+<<<<<<< .mine
+
+._shop_xian{
+	width:100%;
+	max-width:1000px;
+	min-width: 320px;
+	height:49px;
+	background:#ffedeb;
+	float:left;
+}
+._shop_xian p{
+	font-size:16px;
+	color:#ed5862;
+	text-align: center;
+	display:block;
+} 
+
+
+._m_foot{
+	width:100%;
+	min-width:320px;
+	max-width:1000px;
+	height:83px;
+	background:#eeeeee;
+	border-top:1px solid #d9d9d9;
+}
+._m_foot ._coverage_bao{
+	width:155px;
+	height:50px;
+	border-radius:4px;
+	background:#bcbdbf;
+	display:inline-block;
+	color:#fff;
+	font-size:20px;
+	text-align:center;
+	line-height:50px;
+}
+._m_foot ._fast_bi{
+	width:155px;
+	height:50px;
+	border-radius:4px;
+	background:#11b2b0;
+	display:inline-block;
+	color:#fff;
+	font-size:20px;
+	text-align: center;
+	line-height:50px;
+	
+}
+._m_foot  ._m_button{
+	margin-top:16px;
+}
+=======
+html{font-family: "微软雅黑";}
+a{text-decoration: none;}
+ul{
+	list-style: none;
+}
+.contain{
+	width:100%;
+	min-width: 320px;
+	max-width: 1000px;
+	margin:auto;
+}
+._m_header{
+    width:width:100%;
+	min-width: 320px;
+	max-width: 1000px;;
+    height:65px;
+    background:#fff;	
+}
+._m_header ._m_icon_left{
+	background:url(../images/icon/icon.png) no-repeat -98px -108px;width:30px;height:30px;display:block;
+}
+._m_header ._m_icon_right{
+	background:url(../images/icon/icon.png) no-repeat -281px  -94px;width:30px;height:30px;display:block;
+}
+
+.tel{
+	color:#1e6a9b;
+	font-size:20px;
+	text-align: center;
+}
+._expert_recommendation{
+	width:width:100%;
+	min-width: 320px;
+	max-width: 1000px;;
+    height:66px;
+    background:#f1f1f1;
+    border-top:1px solid #d9d9d9;
+    border-bottom:1px solid #d9d9d9;
+}
+._expert_recommendation ._expert_ban ul{
+	width:100%;
+	margin:0;
+	padding:0;
+}
+._expert_recommendation ._expert_ban ul  li{
+	width:25%;
+	float:left;
+	text-align: center;
+}
+._expert_recommendation ._expert_ban ul   a{
+	color:#888888;
+	font-size:16px;
+	line-height:66px;
+}
+._expert_recommendation ._expert_ban ul   a._hover{
+	color:#11b2b0;
+	font-size:16px;
+	line-height:66px;
+	background:url(../images/ban-line.png) no-repeat 0px 63px;
+	width:100%;
+	display:inline-block;
+}
+._shop_xian{
+	width:100%;
+	max-width:1000px;
+	min-width: 320px;
+	height:49px;
+	background:#ffedeb;
+	float:left;
+}
+._shop_xian p{
+	font-size:16px;
+	color:#ed5862;
+	text-align: center;
+	display:block;
+} 
+._all_xian{
+	width:100%;
+	max-width:1000px;
+	min-width: 320px;
+	background:#fff;
+}
+._all_xian ul{
+	width:100%;
+	margin:0;
+	padding:0;
+}
+._all_xian ul li{
+	float:left;
+	width:100%;
+	height:63px;
+	background:#fff;
+	border-top:1px solid #d9d9d9;
+}
+._all_xian ul li._se_zhi{
+	background:#edf9f8;
+}
+/*险种左边的内容*/
+._all_xian ul li ._kinds_xian_left{
+	float:left;
+	margin-left:10px;
+	margin-right:10px;
+}
+._all_xian ul li ._kinds_xian_left input{
+	 border:0;
+	 width:15px;
+	 height:15px;
+	 border:1px solid #c2c2c2;
+	 border-radius:50%;
+	 float:left;
+	 margin-top:16px;
+	 
+}
+._all_xian ul li ._kinds_xian_left ._define p{
+	color:black;
+	font-size:18px;
+	display:block;
+	height:8px;
+	margin-top:10px;
+}
+._all_xian ul li ._kinds_xian_left ._define{
+	float:left;
+}
+._all_xian ul li ._kinds_xian_left ._define span{
+	color:#ccc;
+	font-size:14px;
+	
+}
+._all_xian ul li ._kinds_xian_left ._xian_price{
+	width:81px;
+	height:31px;
+	background:#d6f1f3;
+	border-radius:4px;
+	display:inline-block;
+	line-height:31px;
+	text-align: center;
+	margin-left:8px;
+	margin-top:20px;
+}
+._all_xian ul li ._kinds_xian_right{
+	float:right;
+	height:43px;
+	margin-top:15px;
+}
+._all_xian ul li ._kinds_xian_right input{
+	display:block;
+	margin:auto;
+}
+._all_xian ul li._se_zhi{
+	background:#edf9f8;
+}
+._all_xian ul li ._se_zhi ._kinds_xian_right{
+	float:right;
+	height:43px;
+	margin-top:15px;
+	background:yellow;
+}
+._all_xian ul li ._se_zhi ._kinds_xian_right input{
+	display:block;
+	margin:auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+._m_foot{
+	width:100%;
+	min-width:320px;
+	max-width:1000px;
+	height:83px;
+	background:#eeeeee;
+	border-top:1px solid #d9d9d9;
+}
+._m_foot ._coverage_bao{
+	width:155px;
+	height:50px;
+	border-radius:4px;
+	background:#bcbdbf;
+	display:inline-block;
+	color:#fff;
+	font-size:20px;
+	text-align:center;
+	line-height:50px;
+}
+._m_foot ._fast_bi{
+	width:155px;
+	height:50px;
+	border-radius:4px;
+	background:#11b2b0;
+	display:inline-block;
+	color:#fff;
+	font-size:20px;
+	text-align: center;
+	line-height:50px;
+	
+}
+._m_foot  ._m_button{
+	margin-top:16px;
+}
+>>>>>>> .r4289

@@ -1,0 +1,35 @@
+.ltb_header{
+	overflow: hidden;
+	height: 700px;
+	background: url(../images/58_ltb/bg_top.png) no-repeat;
+	background-color:#040519;
+	background-size: 100% 631px;}
+.flow_sheet{padding-top: 218px;height: 66px;}
+.flow_sheet h3{color: #f4d208;font-size: 14px;font-weight: normal;margin: 15px 0 5px 37px;}
+.flow_sheet ul{background: url(../images/58_ltb/bg_flow.png) no-repeat;background-size: 257px 19px;background-position-y: 3px;margin-left: 35px;}
+.flow_sheet ul li{display: inline;color: #fff;font-size: 12px;padding-left: 19px;line-height: 12px;}
+.ltb_container{overflow:hidden;position:relative;height:438px;background: url(../images/58_ltb/bg_middle.png) no-repeat;background-color: #04234f; background-size:100% 172px;background-position-y: 264px;}
+.ltb_container .container_wrapper{ width: 92%;margin: 0 auto;}
+.ltb_container h3{    padding-left: 12px;}
+.ltb_container ul li{color: #fff;font-size: 11px;letter-spacing: 1px;padding-top: 15px;}
+.ltb_container p{color:#f4d208;font-size: 11px;padding-top: 15px;}
+.ltb_footer {position: relative;overflow:hidden;background-color: #040519;}
+.border_div{margin-top:22px;margin-bottom: 7px;/*width:290px;*/height:2px;background: url(../images/58_ltb/brand_bg.png) no-repeat;/*background-position: center bottom;*/background-size: 100%;}
+.ltb_footer ul{float: left;}
+.ltb_footer ul li{float: left; width: 50%; padding-top: 15px;    text-align: center;}
+.ltb_footer ul li img{width: 110px;}
+.ltb_footer P{text-align: center;font-size: 12px;color: #fff;}
+.ltb_footer .footer_tel
+{
+	clear:both;
+	padding-top: 30px;
+    padding-bottom: 67px;
+    text-align: center;
+    line-height: 24px;
+    color: #fff;}
+.ltb_footer .footer_tel #ltb_tel{font-size: 16px;line-height: 16px;}
+.ltb_footer .footer_border{clear:both;border-right: 2px solid #f4d208;border-left: 2px solid #f4d208;border-bottom: 2px solid #f4d208;padding-bottom: 256px;width: 90%;margin: 0 auto;}
+._title{font-size:14px;color:#f4d208;font-weight:normal;margin: 0;position: absolute;top: 11px;left: 36%;padding-left: 5px; }
+
+
+.ltb_bj{}

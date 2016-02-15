@@ -1,0 +1,57 @@
+/*._dialog_div, ._progress_div {background-color: #fff;}
+._dialog_div ._dialog_content input{background-color: #E9E9E9;border-color: #E9E9E9; color: #b6b6b6;}*/
+button{ background: #4bc712;}
+._dialog_div ._dialog_title h1{color: #B6B6B6;}
+._dialog_div ._dialog_content_phone em {
+    color: #f34a2e;
+}
+._dialog_content_phone .receive_phone p ,._dialog_div ._dialog_content p{
+    color: #B6B6B6;
+}
+._dialog_div ._dialog_content p{
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e5e5e5;
+}
+
+._dialog_div  ._dialog_content .input_border{	
+	margin-top: 15px;
+}
+._dialog_div ._dialog_content_phone ._prompt_form h1.message_cs{
+	color: #6B6B6B;
+}
+._dialog_div ._dialog_content ._get_validate_code {
+	background:#B9B9B9;
+}
+._validate_code_box input.access_code{
+	background:#B9B9B9;
+}
+._dialog_div ._dialog_content ._left_btn{
+	color:#fff;
+    background #f24a2e;
+}
+.chelun_container ._label_inline_checkbox{background: url(../images/chelun/bg_chelun.png) no-repeat;background-size: 19px auto;}
+/*返利详情页面*/
+.chelun_container{background-color: #F0F0F0;}
+.chelun_container *{box-sizing: border-box;}
+.chelun_container h1{width: 100%;background-color: #FFF;line-height: 48px;text-align: center;}
+.chelun_container .chelun_part{overflow:hidden;background-color: #FFF;margin: 10px 5px;width: auto;min-width: 100px;}
+.chelun_container h2{background-color: #FFF;margin:0;font-size: 16px;font-weight: normal;padding: 14px 0 12px 38px;}
+.chelun_container h2.title_01{background:url(../images/icon/icon01.png) no-repeat ; background-position: 13px 15px;background-size:19px 19px}
+.chelun_container h2.title_02{background:url(../images/icon/icon02.png) no-repeat ; background-position: 13px 15px;background-size:19px 19px}
+.chelun_container .hint{border:1px dotted #bfbfbf;background-color:#f7f7f7;position: relative;padding-left: 10px;margin:0px 10px;line-height: 25px;border-radius: 4px;}
+.chelun_container .hint img{width: 100%;}
+.chelun_container .hint p{padding:2px 0;font-size: 12px;color: #989898;}
+.chelun_container .hint em{color: #f34e33;font-weight: normal;}
+.chelun_container form {margin: 10px;}
+.chelun_container input{height: 30px;background-color: #e9e9e9;border-color: #e9e9e9;font-size: 14px;color: #b6b6b6;vertical-align: middle}
+.chelun_container .form_row{margin-bottom: 14px;}
+.chelun_container .triangle{position: absolute;top:-5px;left: 36px;width:9px;height:5px;border-radius: 3px;background: url(../images/icon/rebate_tr.png);background-size: 100% 100%;}
+.chelun_container .city_input{width: 89.655172%;}
+.chelun_container .license_input,.chelun_container .owner_input{width: 54.62069%;}
+.chelun_container button{width: 92%;margin:0 auto 15px;background-color:#4bc712;height: 35px;line-height: 35px;font-size: 17px;}
+.chelun_container ul{width: 100%;float: left;}
+.chelun_container ul li{padding-top: 10px;display: block;float: left;width: 49.8%;text-align: center;border-top: 1px solid #D7D7D7;border-ri}
+.chelun_container h3{padding-bottom: 2px;color: #6b6b6b;font-size: 14px;font-weight: normal;}
+.chelun_container ul li p{color: #b6b6b6;font-size: 12px;}
+.chelun_container ._label_inline_checkbox{margin: 0;margin-left:8px;padding: 0 0 0 20px;font-size: 14px;color: #6b6b6b;background-position: -2px -79px;line-height: 30px;}
+.chelun_container ._label_single_checked{background-position: -2px -53px;}

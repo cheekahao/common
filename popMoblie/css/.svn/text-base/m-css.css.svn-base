@@ -1,0 +1,34 @@
+._m_foot{
+	width:100%;
+	min-width:320px;
+	max-width:1000px;
+	height:83px;
+	background:#eeeeee;
+	border-top:1px solid #d9d9d9;
+}
+._m_foot ._coverage_bao{
+	width:155px;
+	height:50px;
+	border-radius:4px;
+	background:#bcbdbf;
+	display:inline-block;
+	color:#fff;
+	font-size:20px;
+	text-align:center;
+	line-height:50px;
+}
+._m_foot ._fast_bi{
+	width:155px;
+	height:50px;
+	border-radius:4px;
+	background:#11b2b0;
+	display:inline-block;
+	color:#fff;
+	font-size:20px;
+	text-align: center;
+	line-height:50px;
+	
+}
+._m_foot  ._m_button{
+	margin-top:16px;
+}

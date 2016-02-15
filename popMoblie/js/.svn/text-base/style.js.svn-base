@@ -1,0 +1,49 @@
+$(document).ready(function(){
+	//我的爱车
+	$("._wx_list").click(function(){
+		$(this).next().slideToggle();
+	});
+	//我的资料
+	$("._wx_list_data").click(function(){
+		$(this).next().slideToggle();
+	});
+	//绑定油卡
+	$("._wx_bdyk_right .no").click(function(){
+		$(".card_name").hide();
+	});
+	$("._wx_bdyk_right .yes").click(function(){
+		$(".card_name").show();
+	});
+	// 奖励明细
+	$("._wdx_title ul li").on("click",function(){
+	$(this).addClass("hover").siblings().removeClass("hover");
+		var index=$(this).index();
+		$("._jlmx_box ._jlmx_news_list").eq(index).show().siblings().hide();
+	
+	});
+
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

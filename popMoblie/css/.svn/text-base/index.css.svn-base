@@ -1,0 +1,29 @@
+@charset "utf-8";
+/*index.css for mobile by haozj 2015/5/26*/
+/*index slogan*/
+._idx_slogan{background: #eee; height: 1000px;}
+/*车险比价弹出框*/
+._idx_search_form input{display: block; margin: 6px 0 0 0; width: 88%; padding: 0 6%; opacity: 1;}
+._idx_search_form ._btn_box{width: 60%; float: left; margin: 12px 6px 22px 0;}
+._idx_search_form p{font-size: 12px; line-height: 16px; padding-top: 22px;}
+._idx_btn_price img{width: 9px; vertical-align: middle;}
+/*index footer*/
+._idx_btn_price{position: fixed; bottom: 0; display: none;}
+/** city-list **/
+ul,li{padding:0;}
+#city_select{display:none;background-color:#eeeeee}
+#city_select ._search_box{padding:11px 22px;}
+#city_select ._search_box ._search_wrapper{background:url(../images/search_icon.png) no-repeat 18px center;padding-left: 50px;
+	background-size: 25px;border:1px solid #d4d4d4;background-color: #fff;height:40px;
+	border-radius: 5px;-moz-border-radius: 5px;-webkit-border-radius: 5px;}
+
+#city_select ._search_box ._search_wrapper input{height:39px;line-height:39px;font-size:16px;width:100%;color:#000;border:0px;outline: none;
+	text-shadow: none;padding:0px;}
+#city_select ._prov_group{margin: 0}
+#city_select ._prov{border-top:1px solid #c2c2c2;border-bottom:1px solid #c2c2c2;padding-left:15px;height:43px;line-height:43px;font-size:17px;background-color:#eee}
+#city_select ._city_group{margin-bottom:0px;}
+#city_select ._city_group li:hover,#city_select ._city_group li._select{background-color:#fff1f1;}
+#city_select ._city_group li:first-child{border-top-left-radius:0px;border-top-right-radius:0px}
+#city_select ._city_group li:last-child{border-bottom-left-radius:0px;border-bottom-right-radius:0px}
+.list-unstyled{list-style: none;}
+.list-group-item{background-color: #fff;border-bottom: 1px solid #d9d9d9;height:43px;line-height: 43px;font-size: 17px;padding-left: 17px;}

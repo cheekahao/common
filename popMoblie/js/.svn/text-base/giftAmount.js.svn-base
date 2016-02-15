@@ -1,0 +1,71 @@
+/**
+ * 计算送出的优惠礼品等额现金
+ * @param company
+ * @param total
+ * @returns
+ */
+function calDisCount(company, total){
+	var comGift = calGift(company , total);
+	var ybxGift = calGift("YBX" ,total);
+	return comGift + ybxGift ; 
+}
+
+/**
+ * 获取投保礼等额的现金
+ * @param compnay 保险公公司
+ * @param total 商业险和交强险的和
+ * @returns {Number}
+ */
+function calGift(company, total){
+	var val = 0;
+	switch(company){
+		case "YBX":
+			val = calGiftYBX(total, 1000, 50);
+			break;
+		case "DD":
+			val = calGiftDD(total, 1000,100);
+			break;
+		case "YG":
+			val = calGiftYG(total, 1000,100);
+			break;
+		case "TP":
+			val = calGiftTP(total, 1100, 100,600);
+			break;
+		case "TB":
+		case "RB":
+		case "PA":
+		default:
+			val = 0;
+	}
+	return val;
+}
+
+
+function calGiftYBX(total, everyconsumption, gift){
+	return calCommon(total, everyconsumption, gift)
+}
+
+function calGiftDD(total, everyconsumption, gift){
+	return calCommon(total, everyconsumption, gift)
+}
+
+function calGiftYG(total, everyconsumption, gift){
+	return calCommon(total, everyconsumption, gift)
+}
+
+function calGiftTP(total, everyconsumption, gift,limit){
+	var tmp =  calCommon(total, everyconsumption, gift)
+	return Math.min(tmp , limit);
+}
+
+/**
+ * 计算总共需送多少礼品的额度。满多少送多少，例如：满1000 送100
+ * @param total 
+ * @param everyconsumption 
+ * @param gift
+ * @returns {Number}
+ */
+function calCommon(total, everyconsumption, gift){
+	var tmp=Math.floor(total/everyconsumption);
+	return tmp*gift;
+}

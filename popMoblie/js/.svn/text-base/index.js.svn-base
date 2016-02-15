@@ -1,0 +1,272 @@
+(function() {
+	$("#cityName").cityList({
+		cityCodeInput: $("#cityCode"),
+		cityNameInput: $("#cityName"),
+		licenseNoInput:$("#licenseNo"),
+		orgPage:$("._container"),
+		focusObj:$("._idx_banner"),
+		callback:showPriceForm
+	});
+    function showPriceForm(){
+    	$("._dialog_div").openDialog(null, null, false);	
+    	$("header").show();
+    	
+    }
+	function checkIndexForm() {
+		var b=checkForm($("#indexForm"), function(obj) {
+			$(obj).blur(function() {
+				if (checkInput($("#indexForm"),obj)) {
+					$(obj).parents("._form_group").removeClass('_has_error');
+				}
+			});
+			$(obj).parents("._form_group").addClass('_has_error');
+		});
+		if(b){
+			localStorage.cityCode=$("#cityCode").val();
+			localStorage.cityName=$("#cityName").val();
+			localStorage.licenseNo=$("#licenseNo").val();
+			localStorage.ownerMobile=$("#ownerMobile").val();
+		}
+		return b;
+	}
+
+})();
+
+//city-list
+//(function(){
+//	function createCityLi(city) {
+//		var str="<li class=\"list-group-item\" value='" + city.cityCode + "'>"+city.cityName+
+//					"<input type='hidden' value='" +city.cityCode+"' name='cityCode'/>" +
+//					"<input type='hidden' value='"+city.license+"' name='licenseNo'/></li>";
+//		return str;
+//	}
+//
+//	function loadCitys() {
+//		var city;
+//		for(var i=0;i<8;i++) {
+//			city=insureCity[i];
+//			$("._prov_group").find("._city_group").first().append(createCityLi(city));//.append("<li class=\"list-group-item\">"+city.cityName+"<input type='hidden' value='" +city.cityCode+"'/> </li>");
+//		}
+//		var prov=null;
+//		for(var i=8;i<insureCity.length;i++) {
+//			city=insureCity[i];
+//			if(city.provName!=prov){
+//				$("._prov_group").append("<li><div class='_prov'>"+city.provName+"</div><div><ul class='list-group list-unstyled _city_group'></ul>");
+//				prov=city.provName;
+//			}
+//			$("._prov_group").find("._city_group").last().append(createCityLi(city))
+//		}
+//		$("._prov_group").find("._city_group").hide();
+//		$("._prov_group").find("._city_group").first().show();
+//	}
+//
+//	function closeCitySelector() {
+//		$("#_idx_header,#_idx_page,footer").show();
+//		$("#city_select").hide();
+//		$("#indexForm").get(0).scrollIntoView();
+//	}
+//
+//	function findCitys(str) {
+//		str=str.toLowerCase();
+//		var citys=new Array();
+//		for(var i=0;i<insureCity.length;i++) {
+//			city=insureCity[i];
+//			if (city.cityName.toLowerCase().indexOf(str)==0||
+//				city.pinyin.toLowerCase().indexOf(str)==0||
+//				city.jp.toLowerCase().indexOf(str)==0) {
+//				citys.push(city)
+//			}
+//		}
+//		return citys;
+//	}
+//
+//	function selectCity() {
+//		$("#cityName").val($.trim($(this).text()));
+//		$("#cityCode").val($.trim($(this).find(":hidden[name='cityCode']").val()))
+//		$("#licenseNo").val($.trim($(this).find(":hidden[name='licenseNo']").val()))
+//
+//		closeCitySelector();
+//	}
+//
+//	function searchTextChange(obj) {
+//		var str=$.trim($(obj).val());
+//		//如果搜索框内容为空，则显示默认列表
+//		if(str=="") {
+//			$("#_list_div").show();
+//			$("#_auto_complete_list").hide();
+//			return;
+//		}
+//
+//		//查找城市
+//		var citys=findCitys(str);
+//		var citysHtml = "";
+//		if (citys.length>0) {
+//			for(var i=0;i<citys.length;i++) {
+//				citysHtml+=createCityLi(citys[i]);
+//			}
+//		}
+//		//填充内容
+//		$("#_auto_complete_list ._city_group").html(citysHtml);
+//		if ($("#_auto_complete_list ._city_group li").size() > 0) {
+//			$("#_auto_complete_list ._city_group li").eq(0).addClass("_select");
+//		}
+//		
+//
+//		//显示列表
+//		$("#_list_div").hide();
+//		$("#_auto_complete_list").show();
+//
+//		//添加事件
+//		$("#_auto_complete_list ._city_group li").click(selectCity);
+//	}
+//
+//	function searchTextKeyPress(obj,event) {
+//		var str=$.trim($(obj).val());
+//		if (str == searchText_his) {
+//
+//			var licity=$("#_auto_complete_list ._city_group li._select");
+//			if (licity.size()==0) {
+//				licity=$("#_auto_complete_list ._city_group li:eq(0)");
+//			}
+//			switch(event.which) {
+//			case 38://上箭头
+//				if (licity.prev().size()>0) {
+//					licity.removeClass("_select");
+//					licity.prev().addClass("_select");
+//				}
+//				return;
+//			case 40://下箭头
+//				if (licity.next().size()>0) {
+//					licity.removeClass("_select");
+//					licity.next().addClass("_select");
+//				}
+//				return;
+//			case 13://回车
+//				licity.click();
+//				return;
+//			case 9:  //TAB
+//			case 27: //ESC
+//			case 37: //ARRLEFT
+//			case 39: //ARRRIGHT
+//				return;
+//			}
+//		}
+//
+//		searchText_his=str;
+//
+//		searchTextChange(obj);
+//	}
+//
+//	/** 加载城市 **/
+//	loadCitys();
+//
+//	//变量
+//	var searchText_his="";
+//
+//	/** 添加事件 **/
+//	$("#searchText").focus(function() {
+//		$("#_list_div").hide();
+//		$("#_auto_complete_list").show();
+//	}).bind("change input propertyChange keyup keydown", function() {
+//		searchTextKeyPress(this,event);
+//	});
+//
+//	$("._prov").click(function(){
+//		var _cg=$(this).next().find("._city_group");
+//		$("._prov_group").find("._city_group").not(_cg).slideUp("fast");
+//		var obj=$(this);
+//		_cg.slideToggle("fast",function(){
+//			if(_cg.is(":visible")) {
+//				$(obj).get(0).scrollIntoView();
+//			}
+//		});
+//	});
+//
+//	$("._prov_group").find("._city_group li").click(selectCity);
+//
+//	$("#cityName").click(function(){
+//		$("#_idx_header,#_idx_page,footer").hide();
+//		$("#city_select").show();
+//		$("#city_select").get(0).scrollIntoView();
+//	}).focus(function(){$(this).blur();});
+//
+//	$("#city_select header ._left_btn a").click(closeCitySelector);
+//})();
+
+(function() {
+	function findCity(cityStr,provStr) {
+		cityStr=cityStr.replace("市","");
+		provStr=provStr.replace("省","");
+		
+		var prov=null;
+		for(var i=0;i<insureCity.length;i++) {
+			city=insureCity[i];
+			if (city.cityName.indexOf(cityStr)==0) {
+				return city
+			}
+			if (city.provName.indexOf(provStr)==0&&prov==null) {
+				prov=city;
+			}
+		}
+		return prov;
+	}
+	/**
+	 * 带过来的数据进行落地
+	 */
+	function getQueryString(name) {
+	    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+	    var r = window.location.search.substr(1).match(reg);
+	    if (r != null) return decodeURIComponent(r[2]); return null;
+	}
+	function UrlDecode(str) {
+		return decodeURIComponent(str);
+	} 
+	
+	var city=getQueryString("cityCode");
+	var license=getQueryString("licenseNo");
+	var mobile=getQueryString("ownerMobile");
+	var takeValue=false;
+	if (city!=undefined&&city!=null) {
+		for(var i=0;i<insureCity.length;i++){
+			if (insureCity[i].cityCode==city){
+				$("#cityName").val(insureCity[i].cityName);
+				$("#cityCode").val(insureCity[i].cityCode);
+				break;
+			}
+		}
+		takeValue=true;
+	}
+	if(license!=undefined&&license!=null){
+		$("#licenseNo").val(UrlDecode(license));
+		takeValue=true;
+	}
+	if(mobile!=undefined&&mobile!=null){
+		$("#ownerMobile").val(mobile);
+		takeValue=true;
+	}
+	if(!takeValue || ($("#cityName").val() == "" && $("#licenseNo").val())) {
+		if(window.localStorage) {
+			//$("#cityCode").val(localStorage.cityCode);
+			//$("#cityName").val(localStorage.cityName);
+			//$("#licenseNo").val(localStorage.licenseNo);
+//			if(localStorage.ownerMobile != null  && localStorage.ownerMobile != '' &&  localStorage.ownerMobile != undefined){
+//				$("#ownerMobile").val(localStorage.ownerMobile);
+//			}
+		} else {
+			var geolocation = new BMap.Geolocation();
+			geolocation.getCurrentPosition(function(r){
+				if(this.getStatus() == BMAP_STATUS_SUCCESS){
+					var cityStr=r.address.city;
+					var provStr=r.address.province;
+					var city=findCity(cityStr,provStr);
+					if (city!=null&&$.trim($("#cityName").val())=="") {
+						$("#cityName").val(r.address.city);
+						$("#cityCode").val(city.cityCode);
+						$("#licenseNo").val(city.license);
+					}
+				}
+			},{enableHighAccuracy: true})
+		}
+	}
+})();
+

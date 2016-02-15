@@ -1,0 +1,16 @@
+/*revised by haozj 2015/5/31*/
+._insure_tab{padding:0 1px;background-color: #fff;}
+._insure_tab ul{
+	display: table;width: 100%;font-size: 20px;color:#fff;text-align: center;line-height: 45px;
+}
+._insure_tab ul li{display: table-cell;background-color: #a7a7a7;vertical-align:middle;width: 50%;height: 100%;
+	position: relative;cursor: pointer;}
+._insure_tab ul li div{position: absolute;top:26px;left: 50%;margin-left:-10px;font-size: 36px;
+	color:#737373;display: none;}
+._insure_tab ul li._active{background-color: #737373}	
+._insure_tab ul li._active div{display: inline;}
+._insure_tab ul li:first-child{margin-left: -1px;float: left;}
+._insure_tab ul li:last-child{margin-right: -1px;float:right;}
+
+._tab_content{background-color: #fff;}
+

@@ -1,0 +1,165 @@
+﻿// JavaScript Document
+
+//套餐 banner鼠标滑过
+$(document).ready(function () {
+	$("._package_banner_top ul li").on("mouseover",function(){
+	$(this).addClass("hover").siblings().removeClass("hover");
+		var index=$(this).index();
+		$("._package_banner_bottom ._package_banner_img").eq(index).show().siblings().hide();
+	
+	});
+	//套餐 信息鼠标滑过
+	$("._package_summary ul li").on("mouseover",function(){
+	$(this).addClass("hover").siblings().removeClass("hover");
+		var index=$(this).index();
+		$(this).parents("._package_banner_img").find("._package_right").eq(index).show().siblings().hide();
+	});
+	//不计免赔
+	$("._package_list_dt").on("mouseover",function(){
+	$(this).addClass("hover").siblings().removeClass("hover");
+		var index=$(this).index();
+		$(this).parents("._package_banner_img").find("._package_right").eq(index).show().siblings().hide();
+	});
+	
+	//填写详细信息 鼠标点击
+	$("._fill_main_list ul li:eq(0)").click(function(){
+	    $("._fill_main_news").slideToggle("slow");					 
+    });
+	$("._fill_main_list ul li:eq(1)").click(function(){
+	    $("._fill_main_news1").slideToggle("slow");				 
+    });
+	$("._fill_main_list ul li:eq(2)").click(function(){
+	    $("._fill_main_news2").slideToggle("slow");					 
+    });
+	$("._fill_main_list ul li:eq(3)").click(function(){
+	    $("._fill_main_news3").slideToggle("slow");				 
+    });
+	//行驶证 车架号
+	
+	$("._fill_news ._fill_form").on("focus",function(){
+		var index=$(this).index();
+		$("._fill_main_right ._fill_main_tagcjh").eq(index).show();
+		
+	}).on("blur",function(){
+		var index=$(this).index();
+		$("._fill_main_right ._fill_main_tagcjh").eq(index).hide();
+		});
+	
+	//注册日期
+	$("._fill_news ._fill_form_date").on("focus",function(){
+		var index=$(this).index();
+		$("._fill_main_right ._fill_main_tagzcrq").eq(index).show();
+		
+	}).on("blur",function(){
+		var index=$(this).index();
+		$("._fill_main_right ._fill_main_tagzcrq").eq(index).hide();
+		});
+	
+	//品牌型号
+	$("._fill_news ._fill_form_arrow").on("focus",function(){
+		var index=$(this).index();
+		$("._fill_main_right ._fill_main_tagxh").eq(index).show();
+		
+	}).on("blur",function(){
+		var index=$(this).index();
+		$("._fill_main_right ._fill_main_tagxh").eq(index).hide();
+		});
+	
+	//品牌型号
+	$("._fill_news ._fill_form_fdj").on("focus",function(){
+		var index=$(this).index();
+		$("._fill_main_right ._fill_main_tagfdj").eq(index).show();
+		
+	}).on("blur",function(){
+		var index=$(this).index();
+		$("._fill_main_right ._fill_main_tagfdj").eq(index).hide();
+		});
+	//所有人
+	$("._fill_news ._fill_form_name").on("focus",function(){
+		var index=$(this).index();
+		$("._fill_main_right ._fill_main_tagname").eq(index).show();
+		
+	}).on("blur",function(){
+		var index=$(this).index();
+		$("._fill_main_right ._fill_main_tagname").eq(index).hide();
+		});
+	
+	
+	 //初始化：是否开启DIV弹出窗口功能
+	//0 表示开启; 1 表示不开启;
+	var popupStatus = 0;
+	//使用Jquery加载弹窗 
+	function loadPopup(){   
+	//仅在开启标志popupStatus为0的情况下加载  
+	if(popupStatus==0){   
+		$("#backgroundPopup").css({   
+			"opacity": "0.7"  
+		});   
+		$("#backgroundPopup").fadeIn("slow");   
+		$("._popup_box").fadeIn("slow");   
+		popupStatus = 1;   
+		}   
+	}  
+	//使用Jquery去除弹窗效果 
+	function disablePopup(){   
+	//仅在开启标志popupStatus为1的情况下去除
+		if(popupStatus==1){   
+				$("#backgroundPopup").fadeOut("slow");   
+				$("._popup_box").fadeOut("slow");   
+				popupStatus = 0;   
+			}   
+	} 
+	//将弹出窗口定位在屏幕的中央
+	function centerPopup(){   
+	//获取系统变量
+		var windowWidth = document.documentElement.clientWidth;   
+		var windowHeight = document.documentElement.clientHeight;   
+		var popupHeight = $("._popup_box").height();   
+		var popupWidth = $("._popup_box").width();   
+		//居中设置   
+		$("._popup_box").css({   
+			"position": "absolute",   
+			"top": windowHeight/2-popupHeight/2,   
+			"left": windowWidth/2-popupWidth/2   
+		});   
+		//以下代码仅在IE6下有效
+		  
+		$("#backgroundPopup").css({   
+			"height": windowHeight   
+		});   
+	}
+	
+	//打开弹出窗口   
+	//按钮点击事件!
+	$("._cp_results_title ul li:eq(3)").click(function(){   
+		//调用函数居中窗口
+		centerPopup();   
+		//调用函数加载窗口
+		loadPopup();   
+	});
+	//关闭弹出窗口   
+	//点击"X"所触发的事件
+	$("._popup_box_title .popup_close").click(function(){   
+			disablePopup();   
+	});   
+	//点击窗口以外背景所触发的关闭窗口事件!
+	$("#backgroundPopup").click(function(){   
+		disablePopup();   
+	});   
+	//键盘按下ESC时关闭窗口!
+	$(document).keypress(function(e){   
+		if(e.keyCode==27 && popupStatus==1){   
+			disablePopup();   
+		}   
+	}); 
+
+//投保有礼
+	$("._polite_subnav_news ul li").on("click",function(){
+	$(this).addClass("hover").siblings().removeClass("hover");
+		var index=$(this).index();
+		$("._polite_content ._polite_box_news").eq(index).show().siblings().hide();
+	
+	});
+	var hash = window.location.hash;
+	$(hash).trigger("click");
+})

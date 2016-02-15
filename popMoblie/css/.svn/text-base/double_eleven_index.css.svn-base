@@ -1,0 +1,85 @@
+*{margin: 0;}
+.double_eleven_index .header{position: relative;}
+.double_eleven_index .header img{width: 100%;}
+.double_eleven_index .count_down{
+	width: 70%;
+    height: auto;
+	background-color: #ffd200;
+    position: absolute;    
+    top: 83%;
+    left: 15%;}
+.double_eleven_index .count_down .img_lace{
+	position: absolute;
+	top: 39px;
+    width: 100%;
+    height: 11px;
+	background: url(../images/activity/bg_lace.png) no-repeat;
+	background-size: 100%;
+}
+.double_eleven_index  .count_down p{font-size: 11px;color: #d50031;    padding-left: 10px;}
+.double_eleven_index  .count_down .time{font-size: 12px;font-weight: bold;    padding-left: 35px;}
+.double_eleven_index  .count_down .time span{font-size: 21px;}
+.double_eleven_index .content{
+	background-color: #fff;
+	
+}	
+.double_eleven_index .content .form_title h2{    
+	font-size: 17px;
+	color: #fff;
+	text-align: center;
+    padding-top: 28px;}
+.double_eleven_index .content .form_title{
+	background: url(../images/activity/form_title.png) no-repeat;
+	background-size: 159px auto;
+	background-position: center bottom;
+	height: 62px; 
+}
+.double_eleven_index .content .form_style{
+	width: 272px;
+	height: 178px;
+	margin: 17px auto 0;
+}
+.double_eleven_index .content .form_style label{
+	font-size: 15px;
+	padding: 0 9px;
+}
+.double_eleven_index .content .form_style input{
+	border: none;
+	border-bottom: 1px solid #9a9a9a;
+	width: 168px;
+	border-radius: 0px;
+	margin-bottom: 25px;
+	font-size: 14px;
+}
+.double_eleven_index .content .form_style button{    
+	background: #db0038;
+    height: 31px;
+    line-height: 31px;}
+.double_eleven_index .content  .booking_count{    
+    text-align: center;
+    font-size: 13px;
+    padding-bottom: 15px;}
+.double_eleven_index .content  .booking_count span{
+    color:#db0038;
+    padding: 3px;
+    font-size: 17px;
+    background: url(../images/bg/count_bg.png) no-repeat;
+    background-size: 82%;
+    background-position: 1px;}
+.double_eleven_index .footer{    
+	height: 31px;text-align: center;
+	overflow: hidden;
+	background: url(../images/activity/bg_lace.png) no-repeat;    
+	background-color: #fff;
+	background-size: 220px auto;
+    background-position: center top;}
+.double_eleven_index .footer .activity_rules{    
+	width:220px;
+	margin:6px auto 0;
+	background-color: #ffd200;
+	padding-bottom: 7px;
+    padding-top: 2px;
+    font-size: 12px;
+    color: #fff;
+    }
+

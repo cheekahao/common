@@ -1,0 +1,191 @@
+@charset "utf-8";
+._price_box_zdws{background:#fff;border-bottom:1px  solid #e2e4e3;padding: 0 8px;box-sizing: border-box;}
+._price_box_zdws ._price_idx img{width:100%;margin: 8px 0;}
+._price_box_zdws ._che_price{padding: 8px 0;}
+._price_box_zdws ._btn_box{margin-left:15px;margin-right:15px;margin-top:30px;}
+._price_box_zdws ._che_price ._ipt1{width:100%;height:42px;border-bottom: 1px solid #e2e4e3;}
+._price_box_zdws ._che_price ._idx_search_form input._price_input{color:black;font-size:15px;border:0;border-radius:0;display: block;margin: 0px 0 0 0;width: 65%;padding: 0 1%;opacity: 1;float:left;}
+._price_box_zdws ._che_price ._change_city{width:85px;height:28px;float:right;line-height:26px;text-align:center;margin-top:6px;color:#666666;display:inline-block;border:1px solid #dddddd;border-radius:3px;font-size:12px;}
+._price_box_zdws ._che_price ._xin_car{width:90px;height:28px;float:right;line-height:37px;text-align:center;margin-top:6px;color:#666666;display:inline-block;font-size:13px;padding-left:10px;}
+._price_box_zdws ._btn_box ._price_toolip{margin-top:5px;margin-bottom:12px;}
+._price_box_zdws ._btn_box ._price_toolip p{text-align: center;color:#666666;}
+._price_tab_zdws{background:#fff;/*border-top:1px  solid #e2e4e3;*//*margin-top:9px;*//*border-bottom: 1px solid #e2e4e3;*/}
+._price_tab_zdws .list ._l1{float:left;width:48.9%;background:#fff;height:23px;text-align: center;margin-top:13px;}
+._price_tab_zdws .list li a{width:120px;color:#000;height:36px;font-size:16px;display:inline-block;}
+._price_tab_zdws .list li a.hover{border-bottom: 2px solid #ff4400;color:#ff4400;}
+.tab_content ul li a{width:100%;height:100%;display:inline-block;}
+._price_tab_zdws #_sub_act_list{margin-bottom: 15px;background:#fff;float:left;/*margin-top:15px;*/width: 100%;/*border-top: 1px solid #c0c0c0;*/}
+._price_tab_zdws #_sub_act_list ._company_act{width:33.333333%;float:left;height:120px;background:#fff url(../images/zdws/tblzh.png) no-repeat;background-size:170px auto;}
+._price_tab_zdws #_sub_act_list ._company_act1{width:33.333333%;float:left;height:120px;background:#f2fffd url(../images/zdws/tblzh.png) no-repeat;background-size: 170px auto;}
+._price_tab_zdws #_sub_act_list ul li._company_act p._bx_p1{color:#000000;font-size:16px;text-align: center;margin-top:20px;}
+._price_tab_zdws #_sub_act_list ul li._company_act p._bx_p2{color:#ababab;font-size:13px;text-align: center;padding-top:3px;}
+._price_tab_zdws #_sub_act_list ul li._company_act1 p._bx_p1{color:#000000;font-size:16px;text-align: center;margin-top:20px;}
+._price_tab_zdws #_sub_act_list ul li._company_act1 p._bx_p2{color:#ababab;font-size:13px;text-align: center;padding-top:3px;}
+._price_tab_zdws #_quoted_price{margin-top:15px;border-top:1px solid #c0c0c0;text-align:center;background:#fff;float: left;width:100%;margin-bottom: 15px;}
+._price_tab_zdws #_quoted_price ._quoted{height:72px;margin-top:15px;}
+._price_tab_zdws #_quoted_price ._quoted1{height:72px;}
+._price_tab_zdws #_quoted_price ._quoted2{height:72px;}
+._price_tab_zdws #_quoted_price  img{vertical-align: middle;height:38px;}
+._price_tab_zdws #_quoted_price ._quoted li {width:33%;	float:left;	line-height:40px;}
+._price_tab_zdws #_quoted_price ._quoted li img{height:42px;}
+._price_tab_zdws #_quoted_price ._quoted1 li{float:left;width:33%;line-height:40px;}
+._price_tab_zdws #_quoted_price ._quoted2 li {float:left;width:33%;line-height:40px;}
+._price_tab_zdws #_quoted_price ._quoted2 li img{height:40px;}
+/*中大网视统一头部样式*/
+._sub_menu {
+background: #f8f8f8;
+}
+._sub_menu ul li a {
+color: #000;
+
+}
+._header_price {
+background: #f8f8f8;
+border-bottom: 1px solid #c2c2c2;
+}
+._header_price h1 {
+color: #000;
+font-size: 20px;
+line-height: 48px;
+padding: 0 32px;
+}
+._header_price ._left {
+float: left;
+background: url(../images/zdws/icon_arrow_prev1.png) no-repeat;
+background-size: 20px 27px;
+margin: 10px 10px;
+width: 20px;
+height: 27px;
+display: inline-block;
+}
+button._btn_price {border-radius: 0px;background:#ff4400;}
+button {background:#ff4400;
+	color: #FFFFFF;
+}
+body {
+	background: #f4f4f4;
+}
+._header_price ._right_btn, ._header_price ._edit_insurance, ._prompt_form 
+._insurance_label_right span, ._prompt_form ._insurance_label_left, 
+._prompt_form ._insurance_label_left span, ._guide_prompt_box ._expert_img, 
+._insure_guide ._insure_guide_item ._insure_guide_selecter label, 
+._insure_guide ._insure_guide_item ._insure_guide_selecter label._selected, 
+._guide_prompt_box ._switch_btn_up, ._guide_prompt_box ._switch_btn_down, 
+._title_box label, ._order_address ._input_box ._input ._middle_show span, 
+._input_box ._input label {background: url(../images/zdws/icon_insurance_choose1.png) no-repeat;background-size: 158px auto;}
+._prompt_box{background-color:#fff9e5;color:#ff4400;border-bottom: 1px solid #c5c5c5;}
+._vehicle_ex_btn{color:#fff;background-color:#ffa54e;border-radius: 5px;}
+._vehicle_model_div ._vehicle_pannel_box ._search_btn a{background-color:#ff4400;color:#fff;}
+._vehicle_model_div{border-bottom: 1px solid #b9b9b9;color:#666666;background-color:#fffbf4;}
+._insurance_choose ._expert_ban ul li._hover{color:#ff4400;border-bottom: 2px solid #ff4400;}
+._input_box_selected{color:#000;background-color: #fffbf4;}
+._prompt_form ._insurance_label_left span{background-color:#ffe3c8;}
+._all_xian ul li ._kinds_xian_right ._define p._price_se{color:#ff4f4f;}
+._xian_info{background:#fffbf4;}
+._xianlist_duty_info{ background:#fffbf4;}
+._xianlist_info{background:#fffbf4;}
+._xianlist1_info{background:#fffbf4;}
+._xianlist_duty_info{background:#fffbf4;}
+._xianlist_sale_info{background:#fffbf4;}
+._button a{background:#ff4400;}
+
+._audit_box ._audit_news ._audit_button a{
+	background: #ff4400;
+}
+.btn_bindCard{background:#ff4400;}
+button._btn_darkblue {background-color:#b9b9b9;}
+._title_box label {background-position: -136px -5px;}
+._title_box label._selected {background-position: -136px -70px;}
+
+
+._header_price ._header_expert_icon {background: url(../images/zdws/icon_insurance_choose1.png);background-size: 158px auto;background-position: -198px 0;}
+
+._insure_guide ._insure_guide_item ._insure_guide_selecter label, ._input_box ._input label {background-position: -138px -245px;}
+._insure_guide ._insure_guide_item ._insure_guide_selecter label._selected, ._input_box ._input label._selected {background-position: -138px -265px;}
+._prompt_form ._input_box_selected ._insurance_label_left {background-position: -109px -180px;}
+._prompt_form ._insurance_label_right span._buji {background-position: -118px -54px;}
+._prompt_form ._insurance_label_right span {background-position: -118px 10px;}
+._prompt_form ._insurance_label_left {background-position: -109px -116px;}
+._prompt_form ._insurance_label_left span {background-position: -37px -65px;background-color:#ffe3c8;}
+._prompt_form ._input_box_selected ._insurance_label_right span._buji {color: #ff4400;}
+._header_price ._edit_insurance {background-position: 0 -104px;}
+._guide_prompt_box ._expert_img {background-position: -37px -128px;}
+._show_info {background-color: #fffbf4;}
+.insure_color{color: #ff4400; font-size: 1em;}
+._guide_prompt_box h1 {color: #000;}
+._guide_prompt_box {color: #ff4400;}
+._guide_prompt_box {background: #fffbf4;}
+._prompt_form ._insurance_label_right {background: url(../images/zdws/icon_insurance_name1.png) no-repeat;background-size: 37px auto;}
+._prompt_form ._input_box_selected ._zhuxian {background-position: right -64px;}
+._prompt_form ._zhuxian {background-position: right 0;}
+._prompt_form ._fujia {background-position: right -128px;}
+._header_price ._right_btn {background-position: -16px 0;}
+._vehicle_model_div ._vehicle_li_page_box ul li:last-child * {background-color: #ff4400;}
+._vehicle_model_div ._vehicle_li_page_box ul li ._disabled {background-color: #ffa54e;}
+._shop_xian{background:#ff4400;}
+._order_address ._input_box ._input ._middle_show span {background-position: 192px -32px;}
+button:active{background: #dd3c02;}
+button._btn_darkblue:active{background:#7998a8;}
+._by_gm{width:100%;min-width:320px;max-width:1000px;float:left;background:#fffbf4;min-height: 56px;padding: 10px 0px;}
+._label_single_checkbox {
+display: block;
+margin: 10px 15px;
+}
+._label_single_checkbox {font-size: 13px;padding: 10px 0 10px 24px;color: #666;background: url(../images/zdws/icon_insurance_choose1.png) no-repeat;background-size: 158px auto;background-position: -136px 3px;}
+._label_single_checked {background-position: -136px -62px;}
+._label_single_checkbox input, ._label_inline_checkbox input {
+display: none;
+}
+._vehicle_reset_btn {color: #ff4400;}
+/*--审核结果--*/
+._audit_box ._audit_news ._audit_promptnews{
+	height: auto;
+	line-height: 1.8em;
+	color: #666666;
+	padding-left: 10px;
+	padding-right: 10px;
+	font-size:14px;
+}
+
+._audit_box ._audit_news ._audit_button a{
+	background: #ff4400;
+	color: #fff;
+	font-size: 14px;
+	padding: 12px 30px 12px 30px;
+	border-radius: 5px;  
+}
+._audit_box {
+height: 280px;
+}
+._footer_price ._single_btn_box ._btn_order{background:#ff4400;}
+/*订单详情*/
+._label_single_checkbox, ._label_inline_checkbox {
+background: url(../images/zdws/icon_insurance_choose1.png) no-repeat;
+background-size: 158px auto;
+background-position: -136px 3px;
+}
+._label_single_checked {
+background-position: -136px -62px;
+}
+._guide_prompt_box ._switch_btn_down {
+background-position: 0 -15px;
+}
+._insurance_choose ._guide_prompt_box {
+border-bottom: 1px solid #d9d9d9;
+}
+._guide_result {
+border-top: 1px solid #d9d9d9;
+}
+._fo_btn ._price_che{background:#ff4400;}
+#city_select ._search_box ._search_wrapper {
+background: url(../images/search_icon.png) no-repeat 18px center;
+padding-left: 50px;
+background-size: 25px;
+border: 1px solid #d4d4d4;
+background-color: #fff;
+height: 40px;
+border-radius: 5px;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+margin-top: 50px;
+}

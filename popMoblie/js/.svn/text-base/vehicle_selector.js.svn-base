@@ -1,0 +1,123 @@
+(function($){
+	function searchVehicle(page) {
+		var vehicle_input=$("#_vehicle_model_div").get(0).tragObj;
+		var frameNo=vehicle_input.options.frameNoInput.val();
+		var registerDate=vehicle_input.options.registerDateInput.val();
+		var searchCode=$("#_hid_searchText").val();
+
+		function dealVehicleData(data) {
+			if (data==null || data.results==null || data.results.length==0) {
+		 		$("._err_prompt").html("请完整填写行驶证的厂牌信息");
+		 		$("._err_prompt").show();
+		 		$("._vehicle_li_box ul").html("");
+		 		$("._vehicle_li_page_box ul").html("");
+		 		return;
+		 	} else {
+		 		$("._err_prompt").hide();
+		 	}
+		 	var html="";
+		 	var vehiclStr="";
+			searchCode=searchCode.toUpperCase().replace('牌','');
+		 	$.each(data.results,function(idx, vehicle) {
+				var repaceStr = vehicle.searchCode.replace(searchCode,'<b style="color:red">'+searchCode+'</b>');
+		 		vehiclStr=repaceStr+"&emsp;"+vehicle.gearboxName+"&emsp;"+vehicle.parentVehName+"&emsp;"+vehicle.seat+"座 (参考价"+vehicle.price+")";
+		 		html+="<li value='"+vehicle.vehicleId+"' vname='"+vehicle.searchCode+"'>"+vehiclStr+"</li>";
+		 	})
+		 	$("._vehicle_li_box ul").html(html);
+		 	$("._vehicle_li_box ul li").click(selectVehicleModel);
+		 	//page
+		 	setPages(data.pagination.page,data.pagination.pages);
+		}
+		
+		if ($.trim(searchCode)=="") {
+			$.ajax({type:"GET",url:vehicle_input.options.noSearchCodeUrl,
+				data:{"frameNo":frameNo,"rigisterDate":registerDate,"page":page,"size":"6"},
+				dataType:"json",success:dealVehicleData});
+		} else {
+			$.ajax({
+	            type: "GET",
+	            url: vehicle_input.options.haveSearchCodeUrl,
+	            data: {"standardName":searchCode,"page":page,"size":"6"},
+	            dataType: "json",
+	            success:dealVehicleData});
+		}
+	}
+
+	function setPages(curPage,totalPage,method){
+		if (totalPage==undefined||totalPage==null||totalPage<=1) {
+			$("._vehicle_li_page_box ul").html("");
+			return;
+		}
+		
+		var html="";
+		if(curPage>1){
+			html+="<li><a val='"+(curPage-1)+"'>上一页</a></li>";
+		} else {
+			html+="<li><span class='_disabled'>上一页</span></li>";
+		}
+
+		var begin = curPage > 2 ? curPage - 2 : 1;
+		var end = totalPage > begin + 5 ? begin + 5 : totalPage;
+		
+		for (var i=begin; i<=totalPage&&i<end;i++) {
+			if (curPage==i){
+				html+="<li><span class='_current'>"+i+"</span></li>";
+			} else {
+				html+="<li><a val='"+i+"'>"+i+"</a></li>";	
+			}
+		}
+		if(curPage<totalPage){
+			html+="<li><a val='"+(curPage+1)+"'>下一页</a></li>";
+		} else {
+			html+="<li><span class='_disabled'>下一页</span></li>";
+		}
+		$("._vehicle_li_page_box ul").html(html);
+		$("._vehicle_li_page_box ul").find("li a").click(function() {
+			searchVehicle($(this).attr("val"));
+		})
+	}
+
+	function selectVehicleModel() {
+		var vehicle_input=$("#_vehicle_model_div").get(0).tragObj;
+		var vehicle = {"vehicleCode": $(this).attr("value"), "searchCode": $(this).attr("vname"), "modelDesc": $(this).text()};
+		if($.isFunction(vehicle_input.options.selectCallback)) {
+			vehicle_input.options.selectCallback(vehicle);
+		}
+	}
+	
+	$.fn.vehicleList = function(config) {
+
+		$("#_vehicle_model_div ._search_btn a").click(function() {
+			$("#_hid_searchText").val($("[name='searchText']").val());
+			searchVehicle(1);
+		});
+		
+		var options = {
+				searchCode:null,					//厂牌型号
+				frameNoInput: null,					//车架号输入框
+				registerDateInput: null,			//初登日期输入框
+				noSearchCodeUrl:null,				//无厂牌型号查找地址
+				haveSearchCodeUrl:null,				//有厂牌型号查找地址
+				selectCallback:null					//选择车型后的回调方法
+		};
+		
+		options = $.extend(options, config);
+		
+		if (options.searchCode != null) {
+			$("#_hid_searchText").val(options.searchCode);
+		}
+		
+		var me = $(this);
+		var me_this = $(this).get(0);
+		me.click(function() {
+			var tragObj=$(this).get(0);
+			$("#_vehicle_model_div").slideToggle("fast",function() {
+				$("#_vehicle_model_div").get(0).tragObj = tragObj;
+				if ($("#_vehicle_model_div").is(":visible")) {
+					searchVehicle(1);
+				}
+			});
+		})
+		me_this.options=options;
+	}
+})($);

@@ -1,0 +1,121 @@
+(function(){
+	function printHtml() {
+		var headHtml = "<div class=\"top\">" +
+"	<div class=\"_stat_bar\">" +
+"		<div class=\"_stat_bar_content\">" +
+"			<div class=\"_stat_bar_left\">" +
+"				<div class=\"_stat_bar_favor\"><a>收藏易保险</a></div>" +
+"				<div class=\"_stat_bar_qrcode_label\">关注易保险</div>" +
+"			</div>" +
+"			<div class=\"_stat_bar_right\">" +
+/*"				<div><a>订单查询</a></div><div class=\"_splite\" style=\"margin-top:10px;\"></div>" +
+"				<div><a>用户登录</a></div>" +*/
+"			</div>" +
+"			<div class=\"_clear\"></div>" +
+"			<div class=\"_stat_bar_qrcode\"><span class=\"_ar_t\"></span><span class=\"_ar_d\"></span></div>" +
+"		</div>" +
+"	</div>" +
+"	<div class=\"_logo_banner\">" +
+"		<div class=\"_logo\"><a href='/'><img src=\""+contextPath+"/images/logo.jpg\"/></a></div>" +
+"		<div class=\"_head_banner\"><img src=\""+contextPath+"/images/banner.gif\"/></div>" +
+"		<div class=\"_clear\"></div>" +
+"	</div>" +
+
+"</div>";
+		document.write(headHtml);
+	}
+	
+	printHtml();
+	
+	var showImgtimer;
+	var mouseOver = function() {
+		clearTimeout(showImgtimer);
+		$("._stat_bar_qrcode").show();
+	}
+	var mouseOut = function() {
+		showImgtimer = setTimeout(function() {
+			$("._stat_bar_qrcode").hide();
+		},50);
+	}
+	$("._stat_bar_qrcode_label,._stat_bar_qrcode").mouseover(mouseOver).mouseout(mouseOut);
+	
+	function menuFlag() {
+		var hrf=parent.location.href;
+		$("._main_menu_bar").find("li").removeClass("_current");
+		if(hrf.indexOf('/activity/')>0) {
+			$("._main_menu_bar").find("[href*='activity']").parent().addClass("_current");
+		}
+		else if(hrf.indexOf('/brandzone/')>0) {
+			$("._main_menu_bar").find("[href*='brandzone']").parent().addClass("_current");
+		}
+		else if(hrf.indexOf('/knowledge/')>0) {
+			$("._main_menu_bar").find("[rel='knowledge']").parent().addClass("_current");
+		}
+		else if(hrf.indexOf('/checkinsure/')>0) {
+			$("._main_menu_bar").find("[href*='checkinsure']").parent().addClass("_current");
+		}else {
+			$("._main_menu_bar").find("li:eq(0)").addClass("_current");
+		}
+	}
+	menuFlag();
+	$("._stat_bar ._stat_bar_favor").click(function(){
+		var a="http://www.yibaoxian.com/",b="易保险";
+		try {
+			document.all?window.external.AddFavorite(a,b):window.sidebar&&window.sidebar.addPanel?window.sidebar.addPanel(b,a,""):alert("\u5bf9\u4e0d\u8d77\uff0c\u60a8\u7684\u6d4f\u89c8\u5668\u4e0d\u652f\u6301\u6b64\u64cd\u4f5c!\n\u8bf7\u60a8\u4f7f\u7528\u83dc\u5355\u680f\u6216Ctrl+D\u6536\u85cf\u672c\u7ad9\u3002");
+		} catch(e){
+			alert("\u5bf9\u4e0d\u8d77\uff0c\u60a8\u7684\u6d4f\u89c8\u5668\u4e0d\u652f\u6301\u6b64\u64cd\u4f5c!\n\u8bf7\u60a8\u4f7f\u7528\u83dc\u5355\u680f\u6216Ctrl+D\u6536\u85cf\u672c\u7ad9\u3002");
+		}
+	});
+	
+	var showSubMenutimer;
+	$("._main_menu_bar ._main_menu li,._sub_menu").mouseover(function(){
+		clearTimeout(showSubMenutimer);
+		//console.log("over:"+$(this).html());
+		var obj=null;
+		if ($(this).parents("._sub_menu").size()>0) {
+			obj=$(this).parents("._sub_menu");
+		} else if ($(this).find("._sub_menu").size()>0) {
+			obj=$(this).find("._sub_menu");
+		}
+		if (obj!=null) {
+			obj.slideDown();
+		}			
+		return false;
+	}).mouseout(function() {
+		//console.log("out:"+$(this).html());
+	 	var obj=null;
+		if ($(this).parents("._sub_menu").size()>0) {
+			obj=$(this).parents("._sub_menu");
+		} else if ($(this).find("._sub_menu").size()>0) {
+			obj=$(this).find("._sub_menu");
+		}
+		if (obj != null) {
+			showSubMenutimer = setTimeout(function() {
+				obj.slideUp();
+			},500);
+		}
+		return false;
+	});
+})();
+
+$(function (){
+	var checkUrl = "/isLogin";
+	$.ajax({
+		 type:"GET",
+		 url:checkUrl,
+		 timeout:10000,
+		 cache:false,
+		 dataType:"json",
+		 success:function(data){
+			var content = null;
+			if(data.state != 0){
+				content = "<div><a href='/order/query'>订单查询</a></div><div class=\"_splite\" style=\"margin-top:10px;\"></div>" +
+						"<div><a href='/login'>用户登录</a></div>";
+			}else{
+				content = "<div><a href='/uc/order'>欢迎," + data.data.mobile + "</a></div><div class=\"_splite\" style=\"margin-top:10px;\"></div>" +
+						"<div><a href='/logout'>退出</a></div>";
+			}
+			$("._stat_bar_right").append(content);
+		 }
+	});
+});
